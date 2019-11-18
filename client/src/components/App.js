@@ -109,10 +109,7 @@ class App extends Component {
           {/*departments Header */}
           <Heading color="midnight" size="md">        
             Store Departments      
-          </Heading>
-          <Text>
-            <Link to="/dbdata">All++-Items</Link>
-          </Text>
+          </Heading>         
         </Box>
         {/* Searched items in Store Departments */}
         <Box 
@@ -180,6 +177,7 @@ class App extends Component {
           display="flex"
           justifyContent="around"
         >
+          {/* Display Store Departments name on Home Page */}
           {departments.map(department => (
             <Box paddingY={4} margin={2} width={200} key={department._id}>
               <Card
