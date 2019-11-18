@@ -1,0 +1,33 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "item",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    },
+    "thumbnail": {
+      "default": "",
+      "type": "string"
+    },    
+    "price": {
+      "default": "",
+      "type": "decimal"
+    },
+    "department": {
+      "model": "department",
+      "via": "items"
+    }
+  }
+}
