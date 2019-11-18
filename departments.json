@@ -1,0 +1,28 @@
+{
+  "brands": [
+    {
+      "name": "Home",
+      "description": "Shop here for any related items in your home, from furnitures, toiletries, gardening to your pets. Find it, Shop at Ease and Save Money."
+    },
+    {
+      "name": "Fashion",
+      "description": "Shop for the finest designers in Jeweries, Shoes, Clothes, Watches and many more.Find it, Shop at Ease and Save Money."
+    },
+    {
+      "name": "Electronics",
+      "description": "Shop for the best selection of electronics at Every Day Low Prices. Find it, Shop at Ease and Save Money."
+    },
+    {
+      "name": "Automotive",
+      "description": "Shop for Batteries and Accessories in Auto Parts. Buy products such as Stanley FatMax 140W Power Inverter, 2 Pack Bundle. Find it, Shop at Ease and Save Money."
+    },
+    {
+      "name": "Books",
+      "description": "In this department you can search and find millions of both digital and hard copies of books and magazines. Find it, Shop at Ease and Save Money."
+    },
+    {
+      "name": "Sports & Outdoors",
+      "description": "Shop Femmit Sports & Outdoors for sporting goods, hunting, fishing and camping equipment. Find it, Shop at Ease and Save Money."
+    }
+  ]
+}
