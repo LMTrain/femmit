@@ -20,6 +20,7 @@ class App extends Component {
     loadingDepartments: true
   };
 
+  // Connect Graphql using Strapi SDK
   async componentDidMount() {
     try {
 
