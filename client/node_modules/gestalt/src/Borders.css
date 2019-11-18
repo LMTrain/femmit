@@ -1,0 +1,81 @@
+:root {
+  --border-width: 1px;
+  --border-color: #efefef;
+  --border-radius: 8px;
+}
+
+/* Border lines */
+
+.border {
+  border: var(--border-width) solid var(--border-color);
+}
+
+.borderTop {
+  border-top: var(--border-width) solid var(--border-color);
+}
+
+html:not([dir="rtl"]) .borderRight {
+  border-right: var(--border-width) solid var(--border-color);
+}
+
+html[dir="rtl"] .borderRight {
+  border-left: var(--border-width) solid var(--border-color);
+}
+
+.borderBottom {
+  border-bottom: var(--border-width) solid var(--border-color);
+}
+
+html:not([dir="rtl"]) .borderLeft {
+  border-left: var(--border-width) solid var(--border-color);
+}
+
+html[dir="rtl"] .borderLeft {
+  border-right: var(--border-width) solid var(--border-color);
+}
+
+/* Border radii */
+
+.square {
+  border-radius: 0;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.pill {
+  border-radius: 999px;
+}
+
+.rounded {
+  border-radius: var(--border-radius);
+}
+
+.roundedTop {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+html:not([dir="rtl"]) .roundedRight {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+html[dir="rtl"] .roundedRight {
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.roundedBottom {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+html:not([dir="rtl"]) .roundedLeft {
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+html[dir="rtl"] .roundedLeft {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.noBorder {
+  border: 0;
+}
