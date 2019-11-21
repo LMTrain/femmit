@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //prettier ignore
-import {Container, Box, Heading, Card, Image, Text, Button, SearchField, Icon} from 'gestalt';
+import {Container, Box, Card, Image, Text, Button, SearchField, Icon} from 'gestalt';
 import {Link} from 'react-router-dom';
 import Loader from './Loader';
 
@@ -9,6 +9,14 @@ import './App.css';
 import Strapi from 'strapi-sdk-javascript/build/main';
 const apiURL = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiURL);
+
+
+
+const hStyle = {
+  fontSize: '30px',
+  fontFamily: 'calibri light',
+  
+};
 
 class App extends Component {
   state = {
@@ -108,9 +116,9 @@ class App extends Component {
         {/*departments Section */}
         <Box display="flex" justifyContent="center" marginBottom={2}>
           {/*departments Header */}
-          <Heading color="midnight" size="md">        
-            Store Departments      
-          </Heading>         
+          <div style={hStyle} color="black" >        
+            Shop by Departments      
+          </div>
         </Box>
         {/* Searched items in Store Departments */}
         <Box 
@@ -202,7 +210,7 @@ class App extends Component {
                   justifyContent="center"
                   direction="column"
                 >
-                  <Text bold size="xl">
+                  <Text bold size="md">
                       {department.name}
                   </Text>
                     <Text>{department.description}</Text>

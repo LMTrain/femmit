@@ -74,12 +74,6 @@ const UnAuthNav = () => (
         shape="roundedBottom"
     >
         {/* Sign In Link*/}
-        <NavLink activeClassName="active" to="/dbdata">
-          <Text size="xl" color="white">
-              All Items
-          </Text>
-        </NavLink>
-
         <NavLink activeClassName="active" to="/signin">
             <Text size="xl" color="white">
                 Sign In
