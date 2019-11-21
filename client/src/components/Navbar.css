@@ -1,0 +1,337 @@
+form.search {
+  overflow: auto;
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+form.search button[type="submit"] {
+  float: right;
+  margin-top: 10px;
+}
+
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #435970;
+  border-radius: 32px;
+  font-size: 12px;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.mt-4, .my-4 {
+  margin-top: 1.5rem!important;
+}
+
+.lead {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+#message{
+  color:red;
+}
+
+
+.card {
+  /* position: relative; */
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  /* width: 780px;
+  height: 370px; */
+}
+
+.theme-card-body {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: transparent;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  width: 780px;
+  height: 370px;
+}
+
+.theme {
+  background: #fff;  
+  height: 120px;
+  margin: 0.5rem;
+  margin-right: -1rem;
+  /* position: relative; */
+  width: 180px;
+  box-shadow: 0 -3px 15px #6f6666, 0 3px 15px #6f6666;
+  text-align: left;
+}
+
+.theme > .img-container {
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  /* background:#6CADDC; */
+  cursor: pointer;
+  
+}
+.theme > .img-container > img {
+  width: 100%;
+  
+}
+.choosetheme {
+ color: whitesmoke;
+ text-align: center;
+ font-size: 32px;
+}
+
+.theme > .remove {
+  color: #ff1744;
+  font-size: 48px;
+  position: absolute;
+  top: -20px;
+  right: 5px;
+  cursor: pointer;
+}
+
+
+
+.upage-box {
+  background: #fff;
+  border-radius: 2px;
+  height: 120px;
+  margin: 1rem;
+  position: relative;
+  width: 450px;
+  box-shadow: 0 5px 12px #999, 0 10px 12px #999;
+  text-align: left;
+}
+
+.upage-box > .img-container {
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  /* background:#6CADDC; */
+  cursor: pointer;
+}
+.upage-box > .img-container > img {
+  width: 100%
+}
+
+
+.upage-box > .remove {
+  color: #ff1744;
+  font-size: 48px;
+  position: absolute;
+  top: -20px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.upage-box > .remove:hover {
+  color: #d50000;
+}
+
+
+.inside-upage-box {
+  background: rgb(192, 150, 150);
+  height: 50px;
+  margin: 1rem;
+  position: relative;
+  width: 150px;
+  border-radius: 32px;
+  margin-right: 320px;
+  box-shadow: 0 3px 19px rgb(110, 110, 110), 0 5px 19px rgb(110, 110, 110);
+  text-align: left;
+}
+
+b, strong {
+  font-weight: bolder;
+  padding: 2px;
+  
+}
+.inside-upage-box > .img-container {
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  margin-top: -5px;
+  margin-right: -5px;
+  padding: 10px;
+  /* background:#6CADDC; */
+  cursor: pointer;
+}
+.inside-upage-box > .img-container > img {
+  width: 100%
+}
+
+
+.inside-upage-box > .remove {
+  color: #ff1744;
+  font-size: 48px;
+  position: absolute;
+  top: -20px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.inside-upage-box > .remove:hover {
+  color: #d50000;
+}
+
+.upage-box-content{
+  margin-top: 20px;
+}
+
+.row1 {
+
+background-color: whitesmoke;
+width: 1500px;
+height: 300px;
+margin-left: -200px;
+margin-right: -200px;
+margin-top: -65px;
+}
+
+.row2 {
+ 
+  background-color:transparent;
+  width: 1500px;
+  height: 300px;
+  margin-left: -200px;
+  margin-right: -200px;
+  margin-top: -65px;
+  /* border: 4px dotted red; */
+}
+
+.contents-r2-c1 {        
+  text-align:center;
+  margin-right: 200px;
+  margin-left: -200px;
+  height: 340px;
+  width: 450px;
+  margin-top: -80px;
+  /* border: 4px double whitesmoke; */
+  background-color:whitesmoke;
+}
+
+
+.contents-r2-c2 {        
+  text-align:center;
+  margin-right: 200px;
+  margin-left: -55px;
+  height: 340px;
+  width: 450px;
+  margin-top: -80px;
+  /* border: 4px double whitesmoke; */
+  background-color:whitesmoke;
+}
+
+.contents-r2-c3 {        
+  text-align:center;
+  margin-right: -200px;
+  margin-left: 88px;
+  height: 340px;
+  width: 450px;
+  margin-top: -80px;
+  /* border: 4px double whitesmoke; */
+  background-color:whitesmoke;
+}
+
+.checkout-spacing {    
+  color: white;
+  font-size: 24px;
+  margin-right: 80px;
+  }
+
+  .signin-spacing { 
+    margin-left: 850px; 
+    color: black; 
+    font-size: 24px;      
+    }
+
+  .signin-spacing :hover {
+    color: white;
+  }
+
+  .signup-spacing {
+    font-family: medium-content-sans-serif-font, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    font-size: 18px;  
+    margin-right: 80px;
+    display: block;
+    text-rendering: optimizeLegibility;  
+    color: rgba(184, 38, 38, 0.8);
+    text-align: right; 
+    border-width: 1px;
+    border-style: outset;
+    border-image: initial;
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+   
+
+    }
+
+    .signup-spacing :hover {
+      color: white;
+    }
+
+
+
+  .signout-spacing{
+    margin-left: 1000px; 
+    color: white; 
+  }
+
+  .logoname {
+    font-size: 20px;
+    font-family: 'Bodoni';
+    font-weight: bolder;
+    font-size: 20px;
+    color: black;   
+  }
+
+  .logoname :hover {
+    color: white;
+  }
+
+  .list-overflow-container-uspage {
+    height: 350px;
+    border: 1px #DDDDDD solid;
+    background-color: red;
+    border-radius: 4px;
+    margin-right: 35px;
+    margin-top: 10px;
+    margin-left: -17px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 452px;
+}
+
+.lineitems{
+  display: flex;
+  flex-direction: row;
+}
+
+#noofitems {
+  font-size: 18px;
+  font-weight: bold;
+  color: brown
+}

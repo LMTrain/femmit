@@ -1,7 +1,24 @@
 import React from "react";
-import { Box, Text, Heading, Image, Button } from "gestalt";
+import { Box, Image, Button } from "gestalt";
 import { getToken, clearToken, clearCart } from "../utils";
 import { NavLink, withRouter } from "react-router-dom";
+import "./Navbar.css";
+
+const divStyle = {
+  fontSize: '20px',
+  fontFamily: 'bodoni',
+  fontWeight: 'bold',
+  color: 'black',
+  
+};
+
+const divInStyle = {
+  fontSize: '20px',
+  fontFamily: 'bodoni',
+  fontWeight: 'bold',
+  color: 'white',
+  
+};
 
 class Navbar extends React.Component {
     handleSignout = () => {
@@ -21,22 +38,16 @@ const AuthNav = ({ handleSignout }) => (
     display="flex"
     alignItems="center"
     justifyContent="around"
-    height={70}
-    color="midnight"
+    height={50}
+    color="blue"
     padding={1}
-    shape="roundedBottom"
+    // shape="roundedBottom"
+    borderRadius={32}
   >
-    {/* Checkout Link */}
-    <NavLink activeClassName="active" to="/checkout">
-      <Text size="xl" color="white">
-        Checkout
-      </Text>
-    </NavLink>
-
     {/* Title and Logo */}
     <NavLink activeClassName="active" exact to="/">
       <Box display="flex" alignItems="center">
-        <Box marginTop={8} margin={2} height={70} width={70}>
+        <Box marginTop={6} margin={2} height={60} width={70}>
           <Image
             alt="FeMMit Logo"
             naturalHeight={1}
@@ -44,67 +55,75 @@ const AuthNav = ({ handleSignout }) => (
             src="./icons/logo.jpg"
           />
         </Box>
-        <div className="main-title">
-        <Heading size="md" color="white">
+        <div style={divInStyle}>
           FeMMit
-        </Heading>
         </div>
       </Box>
     </NavLink>
 
+    
     {/* Signout Button */}
-    <Button
-      onClick={handleSignout}
-      color="transparent"
-      text="Sign Out"
-      inline
-      size="md"
-    />
+    <div className="signout-spacing">
+      <Button
+        onClick={handleSignout}
+        color="transparent"
+        text="Sign Out"
+        inline
+        size="md"
+      />
+    </div>
+    {/* Checkout Link */}
+    <NavLink activeClassName="active" to="/checkout">
+      <div className="checkout-spacing">
+        <i className="fa fa-shopping-cart"> </i> 
+      </div>
+    </NavLink>    
+
+    
   </Box>
 ); 
 
 const UnAuthNav = () => (
     <Box
-        display="flex" 
-        alignItems="center"
-        justifyContent="around"
-        height={70} 
-        color="midnight" 
-        padding={1} 
-        shape="roundedBottom"
+      display="flex" 
+      alignItems="center"
+      justifyContent="around"
+      height={60} 
+      color="gray" 
+      padding={1} 
+      shape="roundedBottom"
+            
     >
-        {/* Sign In Link*/}
-        <NavLink activeClassName="active" to="/signin">
-            <Text size="xl" color="white">
-                Sign In
-            </Text>
-        </NavLink>
-
         {/* Title and logo*/}
         <NavLink activeClassName="active" exact to="/">
-            <Box display="flex" alignItems="center">
-                <Box marginTop={6} margin={2} height={70} width={80}>
-                    <Image
-                        alt="FeMMit Logo"
-                        naturalHeight={1}
-                        naturalWidth={1}
-                        src="./icons/logo.jpg"
-                    />
-                </Box>
-                {/* Title */}
-                <div className="main-title">
-                <Heading size="md" color="white">
-                FeMMit
-                </Heading>
-                </div>
+          <Box display="flex" alignItems="center">
+            <Box marginTop={6} margin={2} height={60} width={70}>
+              <Image
+                alt="FeMMit Logo"
+                naturalHeight={1}
+                naturalWidth={1}
+                src="./icons/logo.jpg"
+              />
             </Box>
+            {/* Title */}
+            <div className="logoname">                
+              <span>FeMMit</span>              
+            </div>
+          </Box>
+        </NavLink>
+        {/* Sign In Link*/}
+        <NavLink activeClassName="active" to="/signin">
+            <div className="signin-spacing">
+            <i class="fa fa-sign-in" aria-hidden="true" title="Sign In"></i>
+                
+            </div>
         </NavLink>
 
         {/* Sign Up Link*/}
         <NavLink activeClassName="active" to="/signup">
-            <Text size="xl" color="white">
-                Sign Up
-            </Text>
+            <div className="signup-spacing">
+                <span>Get Started</span>
+            </div>
         </NavLink>
     </Box>    
 );

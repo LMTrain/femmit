@@ -1,11 +1,20 @@
 import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
+import './Items.css';
+
 // prettier ignore
-import { Box, Heading, Text, Image, Card, Button, Mask, IconButton } from 'gestalt'
+import { Box, Text, Image, Card, Button, Mask, IconButton } from 'gestalt'
 import {calculatePrice, setCart, getCart} from '../utils';
 import { Link } from 'react-router-dom';
 const apiURL = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiURL);
+
+const hStyle = {
+  fontSize: '30px',
+  fontFamily: 'calibri light',
+  fontWeight: 'bold',
+};
+
 
 class Items extends React.Component {
     state = {
@@ -70,122 +79,123 @@ class Items extends React.Component {
     render() {
         const { department, items, cartItems } = this.state;
         
-        return (
-            <Box
-                marginTop={4}
-                display="flex"
-                justifyContent="center"
-                alignItems="start"
-                dangerouslySetInlineStyle={{
-                  __style: {
-                    flexWrap: 'wrap-reverse'
-                  }
-                }}
-            >
-                {/* items Section */}
-                <Box display="flex" direction="column" alignItems="center">
-                    {/* items Heading */}
-                    <Box margin={2}>
-                        <Heading bold size="md" color="black">{department}</Heading>
-                    </Box>
-                    {/* items */}
-                    <Box
-                        dangerouslySetInlineStyle={{
-                            __style: {
-                                backgroundColor: 'white'
-                            }
-                        }}
-                        wrap
-                        shape="rounded"
-                        display="flex"
-                        justifyContent="center"
-                        padding={4}
-                    >
-                        {items.map(item => (
-                            <Box paddingY={4} margin={2} width={210} key={item._id}>
-                            <Card
-                              image={
-                                <Box height={200} width={200}>
-                                  <Image
-                                    fit="cover"
-                                    alt="Department"
-                                    naturalHeight={1}
-                                    naturalWidth={1}
-                                    src={item.thumbnail}
-                                    // src={`${apiURL}${item.image.url}`}
-                                  />
-                                </Box>
-                              }
-                            >
-                              <Box
-                                display="flex"
-                                alignItems="center"
-                                justifyContent="center"
-                                direction="column"
-                              >
-                                <Box marginBottom={2}>
-                                  <Text bold size="md">
-                                    {item.name}
-                                  </Text>
-                                </Box>
-                                  <Text>{item.description}</Text>
-                                  <Text color="orchid">${item.price}</Text>
-                                <Box marginTop={2}>
-                                  <Text bold size="xl">
-                                    <Button onClick={() => this.addToCart(item)}
-                                    color="blue" text="Add to Cart" />
-                                  </Text>
-                                </Box>
-                              </Box>
-                            </Card>
-                          </Box>                        
-                        ))}
-                    </Box>
+        return (         
+          <Box
+            marginTop={4}
+            display="flex"
+            justifyContent="center"
+            alignItems="start"
+            dangerouslySetInlineStyle={{
+              __style: {
+                flexWrap: 'wrap-reverse'
+              }
+            }}
+          >
+            {/* items Section */}
+            <Box display="flex" direction="column" alignItems="center">
+                {/* items Heading */}
+                <Box margin={2}>
+                  <div style={hStyle}>{department}</div>
                 </Box>
-                {/* User Cart */}
-                <Box alignSelf="end" marginTop={2} marginLeft={8}>
-                  <Mask shape="rounded" wash>
-                    <Box display="flex" direction="column" alignItems="center" padding={2}>
-                      {/* User Cart Heading */}
-                      <Heading align="center" color="black" bold size="xs">Cart</Heading>
-                      <Text color="gray" italic>
-                        {cartItems.length} items selected
-                      </Text>
-
-                      {/* Cart Items*/}
-                      {cartItems.map(iitem => (
-                        <Box key={iitem._id} display="flex" alignItems="center">
-                          <Text>
-                            {iitem.name} x {iitem.quantity} - ${(iitem.quantity * iitem.price).toFixed(2)}
-                          </Text>
-                          <IconButton 
-                            accessibilityLabel="Delete Item"
-                            icon="cancel"
-                            size="sm"
-                            iconColor="red"
-                            onClick={() => this.deleteItemsFromCart(iitem._id)}
-                          />
-
-                        </Box>
-                      ))}
-
-                      <Box display="flex" alignItems="center" justifyContent="center" direction="column">
-                        <Box margin={2}>
-                          {cartItems.length === 0 && (
-                            <Text color="red">Please select some items</Text>
-                          )}
-                        </Box>
-                        <Text size="lg">Total: {calculatePrice(cartItems)}</Text>
-                        <Text>
-                          <Link to="/checkout">Checkout</Link>
-                        </Text>
-
-                      </Box>
-                    </Box>
-                  </Mask>
+                {/* items */}
+                <Box
+                    dangerouslySetInlineStyle={{
+                        __style: {
+                            backgroundColor: 'white'
+                        }
+                    }}
+                    wrap
+                    shape="rounded"
+                    display="flex"
+                    justifyContent="center"
+                    padding={4}
+                >
+                    {items.map(item => (
+                        <Box paddingY={4} margin={2} width={210} key={item._id}>
+                        <Card
+                          image={
+                            <Box height={200} width={200}>
+                              <Image
+                                fit="cover"
+                                alt="Department"
+                                naturalHeight={1}
+                                naturalWidth={1}
+                                src={item.thumbnail}
+                                // src={`${apiURL}${item.image.url}`}
+                              />
+                            </Box>
+                          }
+                        >
+                          <Box
+                            display="flex"
+                            alignItems="center"
+                            justifyContent="center"
+                            direction="column"
+                          >
+                            <Box marginBottom={2}>
+                              <Text bold size="md">
+                                {item.name}
+                              </Text>
+                            </Box>
+                              <Text>{item.description}</Text>
+                              <Text color="orchid">${item.price}</Text>
+                            <Box marginTop={2}>
+                              <Text bold size="xl">
+                                <Button onClick={() => this.addToCart(item)}
+                                color="blue" text="Add to Cart" />
+                              </Text>
+                            </Box>
+                          </Box>
+                        </Card>
+                      </Box>                        
+                    ))}
                 </Box>
             </Box>
-            
+            {/* User Cart */}
+            <div className="lineitems">
+              <Link to="5dcf94e2dc3bcd3de0016978">
+                <Text size="ml" color="black">
+                  Automotive
+                </Text>
+              </Link>
+              <Link to="5dcf9519dc3bcd3de001697b">
+                <Text size="ml" color="black">
+                Books
+                </Text>
+              </Link>
+              <Link to="5dcf94a0dc3bcd3de0016975">
+                <Text size="ml" color="black">
+                Electronics
+                </Text>
+              </Link>
+              <Link to="5dcf9457dc3bcd3de0016972">
+                <Text size="ml" color="black">
+                Fashion
+                </Text>
+              </Link>
+              <Link to="5dcf8d67dc3bcd3de001696f">
+                <Text size="ml" color="black">
+                Home
+                </Text>
+              </Link>
+              <Link to="5dcf9551dc3bcd3de001697e">
+                <Text size="ml" color="black">
+                Sports & Outdoor
+                </Text>
+              </Link>
+              <Box marginTop={2} >
+                <Mask shape="rounded" wash>
+                  <Box padding={2}>
+                    {/* User Cart Heading */}
+                    <i className="fa fa-shopping-cart"> {cartItems.length}</i>                                                
+                      <Text>
+                        <Link to="/checkout">View Cart</Link>
+                      </Text>
+                  </Box>
+                </Mask>
+              </Box>
+            </div>
+          </Box>             
         )
     }
 }
