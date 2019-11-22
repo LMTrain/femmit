@@ -1,10 +1,17 @@
 import React from  'react'
-import { Container, Box, Button, Heading, Text, TextField} from 'gestalt'
+import { Container, Box, Button, Text, TextField} from 'gestalt'
 import {setToken} from '../utils';
 import ToastMessage from './ToastMessage';
 import Strapi from 'strapi-sdk-javascript/build/main';
 const apiURL = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiURL);
+
+const hStyle = {
+    fontSize: '30px',
+    fontFamily: 'calibri light',
+    fontWeight: 'bold',
+    color: 'black',
+  };
 
 class Signup extends React.Component {
     state = {
@@ -71,6 +78,7 @@ class Signup extends React.Component {
                     shape="rounded"
                     display="flex"
                     justifyContent="center"
+                    width={550}
                     
                 >
                     {/* Sign Up Form */}
@@ -89,9 +97,9 @@ class Signup extends React.Component {
                             direction="column"
                             alignItems='center'
                         >
-                            <Heading color="midnight">Let's Get Started</Heading>
+                            <div style={hStyle} color="black" >Let's Get Started</div>                            
                             <Text italic color="orchid">
-                                Sign up to order some items!
+                                Sign up to place your order!
                             </Text>
                         </Box>
                         {/* Username Input */}

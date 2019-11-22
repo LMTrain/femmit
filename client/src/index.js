@@ -9,6 +9,7 @@ import Navbar from './components/Navbar'
 import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Checkout from './components/Checkout';
+import Usercart from './components/Usercart';
 import Items from "./components/Items";
 
 import registerServiceWorker from './registerServiceWorker';
@@ -25,15 +26,17 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 
 const Root = () => (
     <Router>
+        
         <React.Fragment>
             <Navbar />
             <Switch>
                 <Route component={App} exact path="/" />
                 <Route component={Signin} path="/signin" />
                 <Route component={Signup} path="/signup" />
-                <PrivateRoute component={Checkout} path="/checkout" />
+                <PrivateRoute component={Checkout} path="/checkout" />                
                 <Route component={Items} path="/:departmentId"/>
-            </Switch>
+                <Route component={Usercart} part="/usercart" />
+            </Switch>           
         </React.Fragment>
     </Router>
 );

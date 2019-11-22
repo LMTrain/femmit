@@ -1,10 +1,19 @@
 import React from  'react'
-import { Container, Box, Button, Heading, TextField} from 'gestalt'
+import { Container, Box, Button, TextField} from 'gestalt'
 import {setToken} from '../utils';
 import ToastMessage from './ToastMessage';
 import Strapi from 'strapi-sdk-javascript/build/main';
 const apiURL = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiURL);
+
+
+const hStyle = {
+    fontSize: '30px',
+    fontFamily: 'calibri light',
+    fontWeight: 'bold',
+    color: 'black',
+    
+  };
 
 class Signin extends React.Component {
     state = {
@@ -61,7 +70,9 @@ class Signin extends React.Component {
                 <Box
                     dangerouslySetInlineStyle={{
                         __style: {
-                          backgroundColor: '#d6a3b1'
+                          backgroundColor: 'white',
+                          
+                          
                         }
                       }}
                     margin={4}
@@ -69,13 +80,17 @@ class Signin extends React.Component {
                     shape="rounded"
                     display="flex"
                     justifyContent="center"
+                    width={550}
                 >
                     {/* Sign in Form */}
                     <form 
                     style={{
                         display: 'inlineBlock',
                         textAlign: 'center',
-                        maxWidth: 450
+                        maxWidth: 450,
+                        height: 180,                        
+                        
+                        
                     }}
                     onSubmit={this.handleSubmit}                    
                     >
@@ -86,7 +101,8 @@ class Signin extends React.Component {
                             direction="column"
                             alignItems='center'
                         >
-                            <Heading color="midnight">Welcome Back!</Heading>                          
+                            <div style={hStyle} color="black" >Welcome Back!</div>
+                                                     
                         </Box>
                         {/* Username Input */}
                         <TextField

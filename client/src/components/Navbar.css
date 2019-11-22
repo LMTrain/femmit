@@ -260,7 +260,7 @@ margin-top: -65px;
   }
 
   .signin-spacing { 
-    margin-left: 850px; 
+    margin-left: 750px; 
     color: black; 
     font-size: 24px;      
     }
@@ -276,10 +276,10 @@ margin-top: -65px;
     margin-right: 80px;
     display: block;
     text-rendering: optimizeLegibility;  
-    color: rgba(184, 38, 38, 0.8);
+    color:black;
     text-align: right; 
     border-width: 1px;
-    border-style: outset;
+    /* border-style: outset; */
     border-image: initial;
     box-sizing: border-box;
     display: inline-block;
@@ -296,7 +296,7 @@ margin-top: -65px;
 
 
   .signout-spacing{
-    margin-left: 1000px; 
+    margin-left: 900px; 
     color: white; 
   }
 

@@ -288,6 +288,10 @@ margin-top: -65px;
   margin-top: 10px;
 }
 
+.lineitems :hover {
+  color: green;
+}
+
 #noofitems {
   font-size: 18px;
   font-weight: bold;

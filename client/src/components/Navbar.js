@@ -4,21 +4,7 @@ import { getToken, clearToken, clearCart } from "../utils";
 import { NavLink, withRouter } from "react-router-dom";
 import "./Navbar.css";
 
-const divStyle = {
-  fontSize: '20px',
-  fontFamily: 'bodoni',
-  fontWeight: 'bold',
-  color: 'black',
-  
-};
 
-const divInStyle = {
-  fontSize: '20px',
-  fontFamily: 'bodoni',
-  fontWeight: 'bold',
-  color: 'white',
-  
-};
 
 class Navbar extends React.Component {
     handleSignout = () => {
@@ -47,17 +33,14 @@ const AuthNav = ({ handleSignout }) => (
     {/* Title and Logo */}
     <NavLink activeClassName="active" exact to="/">
       <Box display="flex" alignItems="center">
-        <Box marginTop={6} margin={2} height={60} width={70}>
+      <Box marginTop={12} margin={2} height={90} width={180}>
           <Image
             alt="FeMMit Logo"
             naturalHeight={1}
             naturalWidth={1}
-            src="./icons/logo.jpg"
+            src="./icons/logo-in.png"
           />
-        </Box>
-        <div style={divInStyle}>
-          FeMMit
-        </div>
+        </Box>        
       </Box>
     </NavLink>
 
@@ -97,24 +80,20 @@ const UnAuthNav = () => (
         {/* Title and logo*/}
         <NavLink activeClassName="active" exact to="/">
           <Box display="flex" alignItems="center">
-            <Box marginTop={6} margin={2} height={60} width={70}>
+            <Box marginTop={12} margin={2} height={90} width={180}>
               <Image
                 alt="FeMMit Logo"
                 naturalHeight={1}
                 naturalWidth={1}
-                src="./icons/logo.jpg"
+                src="./icons/logo.png"
               />
-            </Box>
-            {/* Title */}
-            <div className="logoname">                
-              <span>FeMMit</span>              
-            </div>
+            </Box>           
           </Box>
         </NavLink>
         {/* Sign In Link*/}
         <NavLink activeClassName="active" to="/signin">
             <div className="signin-spacing">
-            <i class="fa fa-sign-in" aria-hidden="true" title="Sign In"></i>
+            <i className="fa fa-sign-in" aria-hidden="true" title="Sign In"></i>
                 
             </div>
         </NavLink>
