@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 // const apiURL = process.env.API_URL || 'http://localhost:1337';
 // const strapi = new Strapi(apiURL);
 
-class SeeCartItems extends React.Component {
+class SeeBooks extends React.Component {
     state = {       
         cartItems: []
     }
@@ -50,7 +50,7 @@ class SeeCartItems extends React.Component {
                     {/* User Cart Heading */}
                     <Heading align="center" color="black" bold size="xs">Cart</Heading>
                     <Text color="gray" italic>
-                    {cartItems.length} items selected
+                    {cartItems.length} BOOKS selected
                     </Text>
     
                     {/* Cart Items*/}
@@ -73,12 +73,12 @@ class SeeCartItems extends React.Component {
                     <Box display="flex" alignItems="center" justifyContent="center" direction="column">
                     <Box margin={2}>
                         {cartItems.length === 0 && (
-                        <Text color="red">Please select some items</Text>
+                        <Text color="red">THIS IS FOR BOOKS</Text>
                         )}
                     </Box>
                     <Text size="lg">Total: {calculatePrice(cartItems)}</Text>
                     <Text>
-                        <Link to="/checkout">Checkout</Link>
+                        <Link to="/checkout">BOOKS</Link>
                     </Text>
     
                     </Box>
@@ -93,4 +93,4 @@ class SeeCartItems extends React.Component {
 
 }
 
-export default SeeCartItems;
+export default SeeBooks;

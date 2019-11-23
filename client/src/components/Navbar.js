@@ -67,44 +67,44 @@ const AuthNav = ({ handleSignout }) => (
 ); 
 
 const UnAuthNav = () => (
-    <Box
-      display="flex" 
-      alignItems="center"
-      justifyContent="around"
-      height={60} 
-      color="gray" 
-      padding={1} 
-      shape="roundedBottom"
+  <Box
+    display="flex" 
+    alignItems="center"
+    justifyContent="around"
+    height={60} 
+    color="gray" 
+    padding={1} 
+    shape="roundedBottom"
+          
+  >
+    {/* Title and logo*/}
+    <NavLink activeClassName="active" exact to="/">
+      <Box display="flex" alignItems="center">
+        <Box marginTop={12} margin={2} height={90} width={180}>
+          <Image
+            alt="FeMMit Logo"
+            naturalHeight={1}
+            naturalWidth={1}
+            src="./icons/logo.png"
+          />
+        </Box>           
+      </Box>
+    </NavLink>
+    {/* Sign In Link*/}
+    <NavLink activeClassName="active" to="/signin">
+        <div className="signin-spacing">
+        <i className="fa fa-sign-in" aria-hidden="true" title="Sign In"></i>
             
-    >
-        {/* Title and logo*/}
-        <NavLink activeClassName="active" exact to="/">
-          <Box display="flex" alignItems="center">
-            <Box marginTop={12} margin={2} height={90} width={180}>
-              <Image
-                alt="FeMMit Logo"
-                naturalHeight={1}
-                naturalWidth={1}
-                src="./icons/logo.png"
-              />
-            </Box>           
-          </Box>
-        </NavLink>
-        {/* Sign In Link*/}
-        <NavLink activeClassName="active" to="/signin">
-            <div className="signin-spacing">
-            <i className="fa fa-sign-in" aria-hidden="true" title="Sign In"></i>
-                
-            </div>
-        </NavLink>
+        </div>
+    </NavLink>
 
-        {/* Sign Up Link*/}
-        <NavLink activeClassName="active" to="/signup">
-            <div className="signup-spacing">
-                <span>Get Started</span>
-            </div>
-        </NavLink>
-    </Box>    
+    {/* Sign Up Link*/}
+    <NavLink activeClassName="active" to="/signup">
+        <div className="signup-spacing">
+            <span>Get Started</span>
+        </div>
+    </NavLink>
+  </Box>    
 );
 
 export default withRouter(Navbar);

@@ -335,3 +335,10 @@ margin-top: -65px;
   font-weight: bold;
   color: brown
 }
+
+/* Media Queries */
+@media (max-width: 400px) {
+  .main-title {
+    display: none;
+  }
+}

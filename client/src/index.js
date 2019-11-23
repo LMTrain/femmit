@@ -9,7 +9,6 @@ import Navbar from './components/Navbar'
 import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Checkout from './components/Checkout';
-import Usercart from './components/Usercart';
 import Items from "./components/Items";
 
 import registerServiceWorker from './registerServiceWorker';
@@ -34,8 +33,7 @@ const Root = () => (
                 <Route component={Signin} path="/signin" />
                 <Route component={Signup} path="/signup" />
                 <PrivateRoute component={Checkout} path="/checkout" />                
-                <Route component={Items} path="/:departmentId"/>
-                <Route component={Usercart} part="/usercart" />
+                <Route component={Items} path="/:departmentId"/>             
             </Switch>           
         </React.Fragment>
     </Router>
