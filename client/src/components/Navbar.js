@@ -58,7 +58,7 @@ const AuthNav = ({ handleSignout }) => (
     {/* Checkout Link */}
     <NavLink activeClassName="active" to="/checkout">
       <div className="checkout-spacing">
-        <i className="fa fa-shopping-cart"> </i> 
+        <i className="fa fa-shopping-cart">Checkout </i> 
       </div>
     </NavLink>    
 

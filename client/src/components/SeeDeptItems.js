@@ -164,20 +164,17 @@ class SeeDeptItems extends React.Component {
             quantity: 1
             });
             this.setState({cartItems: updatedItems }, () => setCart(updatedItems));
+            console.log(this.state.cartItems);
         } else {
             const updatedItems = [...this.state.cartItems];
             updatedItems[alreadyInCart].quantity += 1;
             this.setState({cartItems: updatedItems },() => setCart(updatedItems));
+            console.log(this.state.cartItems);
 
         }
 
     };
-
-    displayingCartItems = () => {
-        console.log("THIS SHOWS THE ITEMS IN THE CART")
-        this.setState({displayingCart: false})
-        // checkDeptItems = false      
-      };
+    
 
     deleteItemsFromCart = itemToDeleteId => {
         const filteredItems = this.state.cartItems.filter(
@@ -230,8 +227,7 @@ class SeeDeptItems extends React.Component {
                                     alt="Department"
                                     naturalHeight={1}
                                     naturalWidth={1}
-                                    src={item.thumbnail}
-                                    // src={`${apiURL}${item.image.url}`}
+                                    src={item.thumbnail}                                  
                                   />
                                 </Box>
                               }
@@ -261,7 +257,7 @@ class SeeDeptItems extends React.Component {
                         ))}
                     </Box>
                 </Box>
-                {/* User Cart */}
+                {/* Store Department List */}
                 <div className="lineitems">
                 <Link to="5dcf94e2dc3bcd3de0016978">
                 <Text size="ml" color="black">

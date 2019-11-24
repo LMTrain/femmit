@@ -17,9 +17,8 @@ class Items extends React.Component {
   }
 
   displayingCartItems = () => {
-    console.log("THIS SHOWS THE ITEMS IN THE CART")
-    // this.setState({displayingCart: true})
-    // checkDeptItems = false      
+    console.log("THIS SHOWS THE ITEMS IN THE CART")   
+    this.setState({displayingCart: false})      
   };
   
 
@@ -29,18 +28,10 @@ class Items extends React.Component {
 
   }
 
-  componentDidMount() { 
-    
-    let bookDeptId = this.props.match.params.departmentId
-    if (bookDeptId === "5dcf9519dc3bcd3de001697b") {
-      console.log("THIS IS BOOK DEPT ===>", bookDeptId )
-      this.displayingCartItems()
-      
-    } else   
+  componentDidMount() {   
     console.log("THIS SHOWS THE ITEMS IN THE DEPARTMENT" )
     this.setState({displayingCart: true})    
-    this.changeDeptIdState()
-     
+    this.changeDeptIdState()     
   }
   
   render() {

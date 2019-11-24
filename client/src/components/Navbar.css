@@ -255,8 +255,12 @@ margin-top: -65px;
 
 .checkout-spacing {    
   color: white;
-  font-size: 24px;
+  font-size: 22px;
   margin-right: 80px;
+  }
+
+  .checkout-spacing :hover {
+    color: green;
   }
 
   .signin-spacing { 
