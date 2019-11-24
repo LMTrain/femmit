@@ -2,7 +2,7 @@ import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
 import './Items.css';
 import API from '../utils/API';
-// import axios from 'axios';
+import Loader from './Loader';
 // prettier ignore
 import { Box, Text, Image, Card, Button, Mask } from 'gestalt'
 import { setCart, getCart} from '../utils';
@@ -17,8 +17,11 @@ const hStyle = {
 };
 
 var booksArray =[]
-// var itemsDept = ""
-// var itemsInCart = []
+var itemsBooksArray = []
+var bookPrice = ""
+var bookThumbnail = ""
+var ShuffledDatas = []
+var shuffleData = []
 
 const defaultBooks = ["Wars of Law", "Among the Valiant", "Religion", "The Fall of Western Civilization", "Destruction of Black Civilization", "Sex in Antiquity", "Wars", "food", "School", "Country", "Music", "Friends", "Family", "Baby", "Politics"]
 class SeeDeptItems extends React.Component {
@@ -28,7 +31,8 @@ class SeeDeptItems extends React.Component {
         cartItems: [],
         search: "",
         books: [],
-        displayingCart: false
+        displayingCart: false,
+        loadingItems: true
     }
     bookDeptId = () => {
         // console.log("THIS IS BOOK DEPT ===>", this.props.itemDeptId )
@@ -53,9 +57,50 @@ class SeeDeptItems extends React.Component {
     
     displayBooks = () => {
       console.log("THESE ARE THE BOOK LISTs ===>", booksArray )
-      this.setState({ books: booksArray })
-      console.log("THESE ARE THE BOOKs in books state ===>", this.state.books )
-    }
+      this.setState({ books: booksArray, department: "Books" })
+      console.log("THESE ARE THE BOOKs in books state ===>", "department :", this.state.department, "==>", this.state.books )
+
+      for (var i = 0;  i < booksArray.length; i++) { 
+        let bookId = String(booksArray[i].etag)      
+        let bookName = String(booksArray[i].volumeInfo.title)
+        let bookDescription = String(booksArray[i].volumeInfo.description)
+        let bookAuthor = String(booksArray[i].volumeInfo.authors)
+        let bookPublishDate = String(booksArray[i].volumeInfo.publishedDate)
+        if (booksArray[i].volumeInfo.imageLinks == null) {
+          bookThumbnail = 'https://lmtrain.github.io/lm-images/assets/images/books5.jpg'         
+        }else{
+          bookThumbnail = String(booksArray[i].volumeInfo.imageLinks.thumbnail)   
+        }        
+       
+        if (booksArray[i].saleInfo.saleability === "NOT_FOR_SALE") {
+          bookPrice = Number(0.00)          
+        }else{
+          bookPrice = String(booksArray[i].saleInfo.retailPrice.amount)          
+        }
+        function truncateString(str, num) {    
+          if (str.length > num && num > 3) {
+                  return str.slice(0, (num - 3)) + '...';
+              } else if (str.length > num && num <= 3) {
+                  return str.slice(0, num) + '...';
+              } else {
+                  return str;
+          }
+        
+        }
+        let authorLabel = " || Author : "
+        let pulishedLabel = " || Pulished Date : "
+        bookDescription = truncateString(bookDescription, 180) + "\n" + authorLabel + bookAuthor + "\n" + pulishedLabel + bookPublishDate;
+
+        itemsBooksArray.push({"_id": bookId, "name": bookName, "description": bookDescription, "thumbnail": bookThumbnail, "price": bookPrice })
+      }
+      console.log("THIS ARE THE DISPLAY BOOKS==>", itemsBooksArray)
+      this.setState({
+        items: itemsBooksArray,
+        loadingItems: false,      
+        cartItems: getCart()            
+    })        
+    } 
+        
 
     
 
@@ -86,27 +131,31 @@ class SeeDeptItems extends React.Component {
         this.setState({
             items: response.data.department.items,
             department: response.data.department.name,
-            cartItems: getCart()
-        })
-        
-        // let itemsArray = [...this.state.items]
-        // let itemsDept = this.state.department
-        // let itemsInCart = [...this.state.cartItems]
-        // console.log("THIS IS itemsArray :", itemsArray)
-        // console.log("THIS IS itemsArray :", itemsDept)
-        // console.log("THIS IS itemsArray :", itemsInCart)
-        // this.toItemsInArray();
+            loadingItems: false,
+            cartItems: getCart()            
+        })        
     } catch (err) {
         console.error(err);
     }
-    }        
+    this.shuffle()
+    console.log(this.state.items)
+  }
+  shuffle = () => {
+    let itemsArray = [...this.state.items];
+    let itemsShuffled = [];    
+    for (var i = 0;  i < this.state.items.length; i++) {        
+          shuffleData = itemsArray.splice(Math.floor(Math.random()*itemsArray.length/2));        
+          itemsShuffled = [...itemsShuffled, ...shuffleData];
+        }   
+        ShuffledDatas.push(this.state.items);
+    // Set this.state.deals equal to the new deals array
+    this.setState({ items: itemsShuffled });
+    // itemsArray = [...this.state.deals];
+    // this.setState({Items: deals});
     
-    // toItemsInArray = () => {
-    //   let itemsArray = [...this.state.items]
-    //   // this.setState({items:itemsArray})
-    //   console.log("THIS IS items state:", this.state.items)
-    //   console.log("THIS IS itemsArray :", itemsArray)
-    // }
+  };
+        
+    
     addToCart = item => {
       const alreadyInCart = this.state.cartItems.findIndex(iitem => iitem._id === item._id);
         if (alreadyInCart === -1) {
@@ -136,9 +185,9 @@ class SeeDeptItems extends React.Component {
         );
         this.setState({ cartItems: filteredItems }, () => setCart(filteredItems));
     };
-
+    
     render() {
-        const { department, items, cartItems } = this.state;
+        const { department, items, cartItems, loadingItems } = this.state;
         
         return (
             <Box
@@ -257,6 +306,7 @@ class SeeDeptItems extends React.Component {
                 </Mask>
                 </Box>
                 </div>
+                <Loader show={loadingItems} />
             </Box>
         )
     }             
