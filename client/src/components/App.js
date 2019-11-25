@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //prettier ignore
-import {Container, Box, Card, Image, Text, Button, SearchField, Icon} from 'gestalt';
+import {Container, Box, Card, Image, Text } from 'gestalt';
 import {Link} from 'react-router-dom';
 import Loader from './Loader';
 
@@ -22,11 +22,9 @@ class App extends Component {
   state = {
    departments: [],
    department: [],
-   departmentId: [], 
-   searchedItems: [],
+   departmentId: [],    
    cartItems: [],
-   items: [],
-    searchTerm: '',    
+   items: [],   
     loadingDepartments: true
   };
 
@@ -91,12 +89,12 @@ class App extends Component {
   }
 
   render() {
-    const { searchTerm, loadingDepartments, departments, searchedItems } = this.state;
+    const { loadingDepartments, departments } = this.state;
 
     return (
       <Container>
         {/* {departments Search Field */}
-        <Box display="flex" justifyContent="center" marginTop={4}>
+        {/* <Box display="flex" justifyContent="center" marginTop={4}>
           <SearchField 
             id="searchField"
             accessibilityLabel="Departments Search Field"
@@ -112,7 +110,7 @@ class App extends Component {
               accessibilityLabel="Filter"
             />
           </Box>
-        </Box>
+        </Box> */}
         {/*departments Section */}
         <Box display="flex" justifyContent="center" marginBottom={2}>
           {/*departments Header */}
@@ -121,7 +119,7 @@ class App extends Component {
           </div>
         </Box>
         {/* Searched items in Store Departments */}
-        <Box 
+        {/* <Box 
           dangerouslySetInlineStyle={{
             __style: {
               backgroundColor: 'white'
@@ -159,23 +157,21 @@ class App extends Component {
                   <Box marginBottom={2}>
                     <Text bold size="md">
                       {searchedItem.name}
-                      {searchedItem.name}
                     </Text>
                   </Box>
                     <Text>{searchedItem.description}</Text>
                     <Text color="orchid">${searchedItem.price}</Text>
                   <Box marginTop={2}>
                     <Text bold size="xl">
-                    <Link to={`/${searchedItem._id}`}>
-                      <Button color="blue" text="See Items" />
-                    </Link>
+                      <Button onClick={() => this.addToCart(searchedItem)}
+                      color="blue" text="Add to Cart" />
                     </Text>                   
                   </Box>
                 </Box>               
               </Card>
             </Box>
           ))}
-        </Box>
+        </Box> */}
         {/*departments */}
         <Box 
           dangerouslySetInlineStyle={{

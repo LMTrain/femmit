@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 //prettier ignore
-import {Container, Box, Card, Image, Text, Button, SearchField, Icon} from 'gestalt';
+import { Box, Card, Image, Text, Button, SearchField, Icon} from 'gestalt';
 import {Link} from 'react-router-dom';
+import { setCart, getCart } from '../utils';
 // import Loader from './Loader';
 
 import './App.css';
@@ -16,12 +17,30 @@ class SearchItems extends Component {
     searchedItems: [],
     searchTerm: '',    
     // loadingItems: true,
-    items: []
+    items: [],
+    cartItems: []
   
   };
 
   handleChange = ({value}) => {
     this.setState({ searchTerm: value }, () => this.searchDepartments());
+  };
+
+  addToCart = searchedItem => {
+    const alreadyInCart = this.state.cartItems.findIndex(iitem => iitem._id === searchedItem._id);
+    if (alreadyInCart === -1) {
+      const updatedItems = this.state.cartItems.concat({
+        ...searchedItem,
+        quantity: 1
+      });
+      this.setState({cartItems: updatedItems }, () => setCart(updatedItems));
+    } else {
+      const updatedItems = [...this.state.cartItems];
+      updatedItems[alreadyInCart].quantity += 1;
+      this.setState({cartItems: updatedItems },() => setCart(updatedItems));
+
+    }
+
   };
 
 
@@ -43,7 +62,8 @@ class SearchItems extends Component {
     });
     console.log(this.state.searchTerm, response.data.items);
     this.setState({
-     searchedItems: response.data.items,     
+     searchedItems: response.data.items,
+     cartItems: getCart(),    
      loadingItems: false
     });
   }
@@ -116,10 +136,8 @@ class SearchItems extends Component {
                     <Text color="orchid">${searchedItem.price}</Text>
                   <Box marginTop={2}>
                     <Text bold size="xl">
-                      {/* <Link to={`/${department._id}`}>
                       <Button onClick={() => this.addToCart(searchedItem)}
-                      color="blue" text="See Item" />
-                      </Link> */}
+                      color="blue" text="Add to Cart" />
                     </Text>                   
                   </Box>
                 </Box>               
@@ -127,11 +145,7 @@ class SearchItems extends Component {
             </Box>
           ))}
         </Box>       
-      </Box>
-       
-       
-        
-     
+      </Box>     
     );
   }
 }
