@@ -102,7 +102,7 @@ class SeeCartItems extends React.Component {
                         {/* <Card width={300}>                           */}
                             <Box height={200} width={180} align="left">
                             <Image
-                                fit="cover"
+                                // fit="cover"
                                 alt="item"
                                 naturalHeight={1}
                                 naturalWidth={1}

@@ -54,39 +54,39 @@ class App extends Component {
     }
   }
 
-  handleChange = ({value}) => {
-    this.setState({ searchTerm: value }, () => this.searchDepartments());
-  };
+  // handleChange = ({value}) => {
+  //   this.setState({ searchTerm: value }, () => this.searchDepartments());
+  // };
 
 
-  searchDepartments = async () => {
-    const response = await strapi.request('POST', '/graphql', {
-      data: {
-        query: `query {
-         items(where: {
-            name_contains: "${this.state.searchTerm.toLowerCase()}"
-          }) {
-            _id
-            name
-            description
-            thumbnail                       
-            price
-            department {
-              _id
-              name
-            }
-          }
-        }`
-      }
-    });
-    this.setState({
-      searchedItems: response.data.items,
+  // searchDepartments = async () => {
+  //   const response = await strapi.request('POST', '/graphql', {
+  //     data: {
+  //       query: `query {
+  //        items(where: {
+  //           name_contains: "${this.state.searchTerm.toLowerCase()}"
+  //         }) {
+  //           _id
+  //           name
+  //           description
+  //           thumbnail                       
+  //           price
+  //           department {
+  //             _id
+  //             name
+  //           }
+  //         }
+  //       }`
+  //     }
+  //   });
+  //   this.setState({
+  //     searchedItems: response.data.items,
       // departmentId: response.data.items.department._id,
       // department: response.data.items.department.name,
-      loadingDepartments: false
-    });
-    console.log("THIS IS SEARCHED ITEMS ==>", this.state.searchedItems);
-  }
+  //     loadingDepartments: false
+  //   });
+    
+  // }
 
   render() {
     const { loadingDepartments, departments } = this.state;

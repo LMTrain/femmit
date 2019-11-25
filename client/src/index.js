@@ -12,6 +12,7 @@ import Checkout from './components/Checkout';
 import Items from "./components/Items";
 import SearchItems from "./components/SearchItems";
 
+
 import registerServiceWorker from './registerServiceWorker';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -29,9 +30,9 @@ const Root = () => (
         
         <React.Fragment>
             <Navbar />            
-            <SearchItems />    
+            <SearchItems />   
             <Switch>
-                <Route component={App} exact path="/" />
+                <Route component={App} exact path="/" />                
                 <Route component={Signin} path="/signin" />
                 <Route component={Signup} path="/signup" />
                 <PrivateRoute component={Checkout} path="/checkout" />                

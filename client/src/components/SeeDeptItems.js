@@ -132,7 +132,6 @@ class SeeDeptItems extends React.Component {
         this.setState({
             items: response.data.department.items,
             department: response.data.department.name,
-            departmentId: response.data.department._id,
             loadingItems: false,
             cartItems: getCart()            
         })        
@@ -140,7 +139,7 @@ class SeeDeptItems extends React.Component {
         console.error(err);
     }
     this.shuffle()
-    console.log("THIS ARE THE ITEMS==>", this.state.items, "THIS IS THE DEPT ID==>", this.state.departmentId )
+    console.log(this.state.items)
   }
   shuffle = () => {
     let itemsArray = [...this.state.items];

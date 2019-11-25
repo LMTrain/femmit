@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 //prettier ignore
-import { Box, Card, Image, Text, Button, SearchField, Icon} from 'gestalt';
-import {Link} from 'react-router-dom';
+import { Box, SearchField, Icon} from 'gestalt';
+// import SearchResult from './SearchResult';
+import { Redirect } from "react-router-dom";
 import { setCart, getCart } from '../utils';
 // import Loader from './Loader';
 
@@ -15,12 +16,19 @@ const strapi = new Strapi(apiURL);
 class SearchItems extends Component {
   state = {
     searchedItems: [],
-    searchTerm: '',    
+    searchTerm: '',
+    redirect: false,   
     // loadingItems: true,
     items: [],
     cartItems: []
   
   };
+
+  renderRedirect = () => {
+    if (this.state.redirect) {          
+      return <Redirect to='/searchResult' />
+    }
+  }
 
   handleChange = ({value}) => {
     this.setState({ searchTerm: value }, () => this.searchDepartments());
@@ -60,12 +68,14 @@ class SearchItems extends Component {
         }`
       }
     });
-    console.log(this.state.searchTerm, response.data.items);
+    
     this.setState({
      searchedItems: response.data.items,
      cartItems: getCart(),    
-     loadingItems: false
+     loadingItems: false,
+     redirect: true
     });
+    console.log(this.state.searchedItems);
   }
 
   render() {
@@ -91,61 +101,9 @@ class SearchItems extends Component {
             />
           </Box>
         </Box>
-        
-        <Box 
-          dangerouslySetInlineStyle={{
-            __style: {
-              backgroundColor: 'white'
-            }
-          }}
-          shape="rounded"
-          wrap
-          display="flex"
-          justifyContent="around"
-        >
-          {searchedItems.map(searchedItem => (
-            <Box paddingY={4} margin={2} width={200} key={searchedItem._id}>
-              <Card
-                image={
-                  <Box height={200} width={200}>
-                    <Link to={`/${searchedItem._id}`}>
-                    <Image
-                      fit="cover"
-                      alt="Department"
-                      naturalHeight={1}
-                      naturalWidth={1}
-                      src={searchedItem.thumbnail}                   
-             
-                    />
-                    </Link>
-                  </Box>
-                }
-              >
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  direction="column"
-                >
-                  <Box marginBottom={2}>
-                    <Text bold size="md">
-                      {searchedItem.name}
-                    </Text>
-                  </Box>
-                    <Text>{searchedItem.description}</Text>
-                    <Text color="orchid">${searchedItem.price}</Text>
-                  <Box marginTop={2}>
-                    <Text bold size="xl">
-                      <Button onClick={() => this.addToCart(searchedItem)}
-                      color="blue" text="Add to Cart" />
-                    </Text>                   
-                  </Box>
-                </Box>               
-              </Card>
-            </Box>
-          ))}
-        </Box>       
-      </Box>     
+        {/* <SearchResult searchedItems={searchedItems} />  */}
+        {/* {this.renderRedirect()}        */}
+      </Box>
     );
   }
 }

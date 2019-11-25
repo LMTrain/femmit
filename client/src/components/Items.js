@@ -22,7 +22,8 @@ class Items extends React.Component {
   };
   
 
-  changeDeptIdState = () => {  
+  changeDeptIdState = () => { 
+    console.log("THIS IS PARAMA", this.props.match.params) 
     this.setState({itemDeptId: this.props.match.params.departmentId})
     console.log("THIS IS props.match ==>", this.state.itemDeptId, "THIS IS DISpaly :", this.state.displayingCart, this.props.match.params.departmentId ) 
 
