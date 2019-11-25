@@ -3,6 +3,7 @@ import { Box, Image, Button } from "gestalt";
 import { getToken, clearToken, clearCart } from "../utils";
 import { NavLink, withRouter } from "react-router-dom";
 import "./Navbar.css";
+// import SearchItems from "./SearchItems";
 
 
 
@@ -90,6 +91,7 @@ const UnAuthNav = () => (
         </Box>           
       </Box>
     </NavLink>
+    
     {/* Sign In Link*/}
     <NavLink activeClassName="active" to="/signin">
         <div className="signin-spacing">

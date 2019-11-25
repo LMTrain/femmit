@@ -20,7 +20,9 @@ const hStyle = {
 
 class App extends Component {
   state = {
-   departments: [], 
+   departments: [],
+   department: [],
+   departmentId: [], 
    searchedItems: [],
    cartItems: [],
    items: [],
@@ -58,14 +60,6 @@ class App extends Component {
     this.setState({ searchTerm: value }, () => this.searchDepartments());
   };
 
-  // filteredDepartments = ({searchTerm,departments }) => {
-  //   returndepartments.filter(department => {
-  //     return (
-  //       department.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //       department.description.toLowerCase().includes(searchTerm.toLowerCase())
-  //     );
-  //   });
-  // }
 
   searchDepartments = async () => {
     const response = await strapi.request('POST', '/graphql', {
@@ -79,15 +73,21 @@ class App extends Component {
             description
             thumbnail                       
             price
+            department {
+              _id
+              name
+            }
           }
         }`
       }
     });
-    console.log(this.state.searchTerm, response.data.items);
     this.setState({
-     searchedItems: response.data.items,     
+      searchedItems: response.data.items,
+      // departmentId: response.data.items.department._id,
+      // department: response.data.items.department.name,
       loadingDepartments: false
     });
+    console.log("THIS IS SEARCHED ITEMS ==>", this.state.searchedItems);
   }
 
   render() {
@@ -159,14 +159,16 @@ class App extends Component {
                   <Box marginBottom={2}>
                     <Text bold size="md">
                       {searchedItem.name}
+                      {searchedItem.name}
                     </Text>
                   </Box>
                     <Text>{searchedItem.description}</Text>
                     <Text color="orchid">${searchedItem.price}</Text>
                   <Box marginTop={2}>
                     <Text bold size="xl">
-                      <Button onClick={() => this.addToCart(searchedItem)}
-                      color="blue" text="Add to Cart" />
+                    <Link to={`/${searchedItem._id}`}>
+                      <Button color="blue" text="See Items" />
+                    </Link>
                     </Text>                   
                   </Box>
                 </Box>               
