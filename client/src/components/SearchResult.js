@@ -6,10 +6,14 @@ import { setCart, getCart } from '../utils';
 // import Loader from './Loader';
 import './App.css';
 
+// import Strapi from 'strapi-sdk-javascript/build/main';
+// const apiURL = process.env.API_URL || 'http://localhost:1337';
+// const strapi = new Strapi(apiURL);
 
 
 
-class SearchItems extends Component {
+
+class SearchResult extends Component {
   state = {
     searchedResult: [],
     searchTerm: '',    
@@ -39,17 +43,47 @@ class SearchItems extends Component {
 
   setSearchedResult = () => {
     this.setState({
-    searchedResult: this.state.searchedItems,
+    searchedResult: this.props.searchedItems,
     cartItems: getCart(),    
-    loadingItems: false
+    // loadingItems: false
     });
 
   }
 
+  // async componentDidMount() {
+  //   try {
 
+  //     const response = await strapi.request('POST', '/graphql', {
+  //       data: {
+  //         query: `query {
+  //           items {
+  //             _id    
+  //             name
+  //             description
+  //             thumbnail
+  //             price
+  //             department{
+  //               _id
+  //               name
+  //             }
+  //           }
+  //         }`
+  //       }
+  //     });
+      
+  //     this.setState({
+  //       searchedResult: response.data.items,
+  //      cartItems: getCart()});
+  //     console.log(this.state.searchedResult);
+  //   }catch (err) {
+  //     console.log (err);
+  //   }
+  // }
+  
   componentDidMount() {     
     
       console.log("THIS IS SEARCHED ITEMS", this.props.searchedItems);
+      // this.searchDepartments()
       this.setSearchedResult()
   }
   
@@ -119,4 +153,4 @@ class SearchItems extends Component {
   }
 }
 
-export default SearchItems;
+export default SearchResult;

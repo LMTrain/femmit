@@ -44,6 +44,11 @@ const AuthNav = ({ handleSignout }) => (
         </Box>        
       </Box>
     </NavLink>
+    <NavLink activeClassName="active" to="/searchresult">
+        <div className="signup-spacing">
+            <span>Search Result</span>
+        </div>
+    </NavLink>
 
     
     {/* Signout Button */}
@@ -97,6 +102,11 @@ const UnAuthNav = () => (
         <div className="signin-spacing">
         <i className="fa fa-sign-in" aria-hidden="true" title="Sign In"></i>
             
+        </div>
+    </NavLink>
+    <NavLink activeClassName="active" to="/searchresult">
+        <div className="signup-spacing">
+            <span>Search Result</span>
         </div>
     </NavLink>
 

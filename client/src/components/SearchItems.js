@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //prettier ignore
 import { Box, SearchField, Icon} from 'gestalt';
-// import SearchResult from './SearchResult';
+import SearchResult from './SearchResult';
 import { Redirect } from "react-router-dom";
 import { setCart, getCart } from '../utils';
 // import Loader from './Loader';
@@ -26,7 +26,7 @@ class SearchItems extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {          
-      return <Redirect to='/searchResult' />
+      return <Redirect to='/searchresult' />
     }
   }
 
@@ -101,8 +101,8 @@ class SearchItems extends Component {
             />
           </Box>
         </Box>
-        {/* <SearchResult searchedItems={searchedItems} />  */}
-        {/* {this.renderRedirect()}        */}
+        <SearchResult searchedItems={searchedItems} /> 
+        {this.renderRedirect()}       
       </Box>
     );
   }
