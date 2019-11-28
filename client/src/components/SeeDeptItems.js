@@ -35,6 +35,8 @@ class SeeDeptItems extends React.Component {
         displayingCart: false,
         loadingItems: true
     }
+
+    
     bookDeptId = () => {
         // console.log("THIS IS BOOK DEPT ===>", this.props.itemDeptId )
         // console.log("THIS IS props.itemDeptId ==>", this.props.itemDeptId) 
@@ -108,8 +110,8 @@ class SeeDeptItems extends React.Component {
     async componentDidMount() {        
         if (this.props.itemDeptId === "5dcf9519dc3bcd3de001697b") {
         console.log("THIS IS BOOK DEPT ===>", this.props.itemDeptId )
-        this.bookDeptId();
-        } else   
+        this.bookDeptId();       
+        } else
         
         try {       
         const response = await strapi.request('POST', '/graphql', {
@@ -129,6 +131,7 @@ class SeeDeptItems extends React.Component {
                 }`
             }
         });
+        console.log("THIS IS Searh ITEM From APPs", this.props.searchTerm)
         this.setState({
             items: response.data.department.items,
             department: response.data.department.name,
@@ -140,6 +143,7 @@ class SeeDeptItems extends React.Component {
     }
     this.shuffle()
     console.log(this.state.items)
+    console.log("THIS IS Searh ITEM From APPs", this.props.searchTerm)
   }
   shuffle = () => {
     let itemsArray = [...this.state.items];

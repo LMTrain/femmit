@@ -17,9 +17,9 @@ a:visited {
   font-style: italic;
 }
 
-form input {
+/* form input {
   margin-bottom: 0.5em;
-}
+} */
 
 #stripe__button {
   white-space: nowrap;

@@ -101,7 +101,7 @@ class SearchItems extends Component {
             />
           </Box>
         </Box>
-        <SearchResult searchedItems={searchedItems} /> 
+    
         {this.renderRedirect()}       
       </Box>
     );

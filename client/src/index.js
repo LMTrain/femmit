@@ -10,7 +10,7 @@ import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Checkout from './components/Checkout';
 import Items from "./components/Items";
-import SearchItems from "./components/SearchItems";
+// import SearchItems from "./components/SearchItems";
 import SearchResult from "./components/SearchResult"
 
 
@@ -24,6 +24,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
                 pathname: '/signin',
                 state: { from: props.location }
             }} />
+            
     )} />
 )
 
@@ -31,16 +32,14 @@ const Root = () => (
     <Router>
         
         <React.Fragment>
-            <Navbar />            
-            <SearchItems />   
+            <Navbar />
             <Switch>
-                <Route component={App} exact path="/" />                
-                {/* <Route component={SearchItems} path="/searchitems" /> */}
+                <Route component={App} exact path="/" />             
                 <Route component={SearchResult} exact path="/searchresult" />
                 <Route component={Signin} path="/signin" />
                 <Route component={Signup} path="/signup" />
                 <PrivateRoute component={Checkout} path="/checkout" />                
-                <Route component={Items} path="/:departmentId"/>
+                <Route component={Items} path="/:departmentId" />
             </Switch>           
         </React.Fragment>
     </Router>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 //prettier ignore
-import {Container, Box, Card, Image, Text } from 'gestalt';
-import {Link} from 'react-router-dom';
+import {Container, Box, Card, Image, Text, SearchField, Icon } from 'gestalt';
+import {Link, Redirect} from 'react-router-dom';
 import Loader from './Loader';
+import SearchResult from './SearchResult';
 
 import './App.css';
 // import Items from './Items';
@@ -24,9 +25,21 @@ class App extends Component {
    department: [],
    departmentId: [],    
    cartItems: [],
-   items: [],   
-    loadingDepartments: true
+   items: [],
+   searchedItems:[],
+   searchTerm: '',   
+    loadingDepartments: true,
+    redirect: false,
+    searchTermState: false
   };
+
+  renderRedirect = () => {
+    if (this.state.redirect) {          
+      return <Redirect to='/SearchResult' />
+    }
+  }
+
+  
 
   // Connect Graphql using Strapi SDK
   async componentDidMount() {
@@ -54,47 +67,48 @@ class App extends Component {
     }
   }
 
-  // handleChange = ({value}) => {
-  //   this.setState({ searchTerm: value }, () => this.searchDepartments());
-  // };
+  handleChange = ({value}) => {
+    this.setState({ searchTerm: value }, () => this.searchDepartments());
+  };
 
-
-  // searchDepartments = async () => {
-  //   const response = await strapi.request('POST', '/graphql', {
-  //     data: {
-  //       query: `query {
-  //        items(where: {
-  //           name_contains: "${this.state.searchTerm.toLowerCase()}"
-  //         }) {
-  //           _id
-  //           name
-  //           description
-  //           thumbnail                       
-  //           price
-  //           department {
-  //             _id
-  //             name
-  //           }
-  //         }
-  //       }`
-  //     }
-  //   });
-  //   this.setState({
-  //     searchedItems: response.data.items,
-      // departmentId: response.data.items.department._id,
-      // department: response.data.items.department.name,
-  //     loadingDepartments: false
-  //   });
+  
+  searchDepartments = async () => {   
+    // console.log(this.state.searchTerm)
+    const response = await strapi.request('POST', '/graphql', {
+      data: {
+        query: `query {
+         items(where: {
+            name_contains: "${this.state.searchTerm.toLowerCase()}"
+          }) {
+            _id
+            name
+            description
+            thumbnail                       
+            price
+            department {
+              _id
+              name
+            }
+          }
+        }`
+      }
+    });
+    this.setState({
+      searchedItems: response.data.items,     
+      loadingDepartments: false,
+      redirect: true,
+      searchTermState: true
+    });
     
-  // }
+  }
 
   render() {
-    const { loadingDepartments, departments } = this.state;
-
+    const { searchTerm, searchTermState, loadingDepartments, departments, searchedItems } = this.state;
+    
     return (
       <Container>
         {/* {departments Search Field */}
-        {/* <Box display="flex" justifyContent="center" marginTop={4}>
+        <Box display="flex" justifyContent="center" marginTop={4}>
           <SearchField 
             id="searchField"
             accessibilityLabel="Departments Search Field"
@@ -102,7 +116,7 @@ class App extends Component {
             value={searchTerm}
             placeholder="Search Departments"
           />
-          <Box margin={3}>
+          <Box margin={3}>            
             <Icon 
               icon="filter"
               color={searchTerm ? 'orange' : 'gray'}
@@ -110,7 +124,7 @@ class App extends Component {
               accessibilityLabel="Filter"
             />
           </Box>
-        </Box> */}
+        </Box>
         {/*departments Section */}
         <Box display="flex" justifyContent="center" marginBottom={2}>
           {/*departments Header */}
@@ -118,60 +132,7 @@ class App extends Component {
             Shop by Departments      
           </div>
         </Box>
-        {/* Searched items in Store Departments */}
-        {/* <Box 
-          dangerouslySetInlineStyle={{
-            __style: {
-              backgroundColor: 'white'
-            }
-          }}
-          shape="rounded"
-          wrap
-          display="flex"
-          justifyContent="around"
-        >
-          {searchedItems.map(searchedItem => (
-            <Box paddingY={4} margin={2} width={200} key={searchedItem._id}>
-              <Card
-                image={
-                  <Box height={200} width={200}>
-                    <Link to={`/${searchedItem._id}`}>
-                    <Image
-                      fit="cover"
-                      alt="Department"
-                      naturalHeight={1}
-                      naturalWidth={1}
-                      src={searchedItem.thumbnail}                   
-                      // src={`${apiURL}${department.image.url}`}
-                    />
-                    </Link>
-                  </Box>
-                }
-              >
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  direction="column"
-                >
-                  <Box marginBottom={2}>
-                    <Text bold size="md">
-                      {searchedItem.name}
-                    </Text>
-                  </Box>
-                    <Text>{searchedItem.description}</Text>
-                    <Text color="orchid">${searchedItem.price}</Text>
-                  <Box marginTop={2}>
-                    <Text bold size="xl">
-                      <Button onClick={() => this.addToCart(searchedItem)}
-                      color="blue" text="Add to Cart" />
-                    </Text>                   
-                  </Box>
-                </Box>               
-              </Card>
-            </Box>
-          ))}
-        </Box> */}
+     
         {/*departments */}
         <Box 
           dangerouslySetInlineStyle={{
@@ -220,6 +181,10 @@ class App extends Component {
         {/* <Spinner show={loadingDepartments} accessibilityLabel="Loading Spinner" /> */}
        <Loader show={loadingDepartments} />
        {/* {loadingDepartments && <Loader />} */}
+      <div>   
+      {searchTermState ? <SearchResult searchTerm={searchTerm}/> : this.state.searchTerm === null && <SearchResult searchTerm={this.state.searchTerm}/>}
+       {this.renderRedirect()}
+      </div>
       </Container>
     );
   }

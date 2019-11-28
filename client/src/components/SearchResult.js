@@ -5,10 +5,11 @@ import {Link} from 'react-router-dom';
 import { setCart, getCart } from '../utils';
 // import Loader from './Loader';
 import './App.css';
+// import searchedItems from './SearchItems';
 
-// import Strapi from 'strapi-sdk-javascript/build/main';
-// const apiURL = process.env.API_URL || 'http://localhost:1337';
-// const strapi = new Strapi(apiURL);
+import Strapi from 'strapi-sdk-javascript/build/main';
+const apiURL = process.env.API_URL || 'http://localhost:1337';
+const strapi = new Strapi(apiURL);
 
 
 
@@ -16,7 +17,7 @@ import './App.css';
 class SearchResult extends Component {
   state = {
     searchedResult: [],
-    searchTerm: '',    
+    searchTermName: '',    
     // loadingItems: true,
     items: [],  
     cartItems: []
@@ -41,50 +42,41 @@ class SearchResult extends Component {
 
   };
 
-  setSearchedResult = () => {
+  searchDepartments = async () => {   
+    // console.log(this.state.searchTerm)
+    const response = await strapi.request('POST', '/graphql', {
+      data: {
+        query: `query {
+         items(where: {
+            name_contains: "${this.state.searchTermName.toLowerCase()}"
+          }) {
+            _id
+            name
+            description
+            thumbnail                       
+            price
+            department {
+              _id
+              name
+            }
+          }
+        }`
+      }
+    });      
     this.setState({
-    searchedResult: this.props.searchedItems,
-    cartItems: getCart(),    
-    // loadingItems: false
-    });
-
+      searchedResult: response.data.items,
+      cartItems: getCart()});
+    console.log(this.state.searchedResult);
+    
   }
 
-  // async componentDidMount() {
-  //   try {
-
-  //     const response = await strapi.request('POST', '/graphql', {
-  //       data: {
-  //         query: `query {
-  //           items {
-  //             _id    
-  //             name
-  //             description
-  //             thumbnail
-  //             price
-  //             department{
-  //               _id
-  //               name
-  //             }
-  //           }
-  //         }`
-  //       }
-  //     });
-      
-  //     this.setState({
-  //       searchedResult: response.data.items,
-  //      cartItems: getCart()});
-  //     console.log(this.state.searchedResult);
-  //   }catch (err) {
-  //     console.log (err);
-  //   }
-  // }
+  
   
   componentDidMount() {     
-    
-      console.log("THIS IS SEARCHED ITEMS", this.props.searchedItems);
-      // this.searchDepartments()
-      this.setSearchedResult()
+    this.setState({searchTermName: this.props.searchTerm})
+    console.log("THIS IS SEARCHED ITEMS NAME",  this.state.searchTermName);   
+    this.searchDepartments();
+   
   }
   
 
