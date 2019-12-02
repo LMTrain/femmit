@@ -103,7 +103,7 @@ class App extends Component {
   }
 
   render() {
-    const { searchTerm, searchTermState, loadingDepartments, departments, searchedItems } = this.state;
+    const { searchTerm, searchTermState, loadingDepartments, departments } = this.state;
     
     return (
       <Container>

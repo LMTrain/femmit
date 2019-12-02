@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 //prettier ignore
 import { Box, SearchField, Icon} from 'gestalt';
-import SearchResult from './SearchResult';
 import { Redirect } from "react-router-dom";
 import { setCart, getCart } from '../utils';
 // import Loader from './Loader';

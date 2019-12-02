@@ -1,6 +1,6 @@
 import React from 'react';
 import './Items.css';
-import { Box, Heading, Text, Image, Card, Button, IconButton } from 'gestalt'
+import { Box, Heading, Text, Image, Button, IconButton } from 'gestalt'
 import {calculatePrice, setCart, getCart} from '../utils';
 import { Link } from 'react-router-dom';
 import './Items.css';
