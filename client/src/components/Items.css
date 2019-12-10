@@ -70,11 +70,11 @@ form.search button[type="submit"] {
   display: flex;
   flex-direction: row;
   align-items:center;
-  font-size: 28px;
-  padding:1px;
-  gap: 90px;
-  margin-top: 35px;
-  margin-left: 200px;
+  font-size: 26px;
+  padding:.5px;
+  gap: 5px;
+  margin-top: 5px;
+  margin-left: 150px;
 }
 
 .lineitems :hover {

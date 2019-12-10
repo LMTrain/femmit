@@ -45,28 +45,43 @@ class SeeCartItems extends React.Component {
             <React.Fragment>
 
                 <div className="lineitems">
-                    <div className="lineitems">
+                    
                         <Link to="5dcf94e2dc3bcd3de0016978"> 
-                            <p>Automotive</p>
+                            <div className="lineitems">
+                                <p>Automotive</p>
+                            </div>
                         </Link>
-                        <Link to="5dcf9519dc3bcd3de001697b">                        
-                            <p>Books</p>                      
+
+                        <Link to="5dcf9519dc3bcd3de001697b">
+                            <div className="lineitems">                        
+                                <p>Books</p> 
+                            </div>                     
                         </Link>
-                        <Link to="5dcf94a0dc3bcd3de0016975">                      
-                            <p>Electronics</p>
+
+                        <Link to="5dcf94a0dc3bcd3de0016975">
+                            <div className="lineitems">                      
+                                <p>Electronics</p>
+                            </div>
                         </Link>
-                        <Link to="5dcf9457dc3bcd3de0016972">                        
-                            <p>Fashion</p>
-                       
+
+                        <Link to="5dcf9457dc3bcd3de0016972">
+                            <div className="lineitems">                     
+                                <p>Fashion</p>
+                            </div>                        
                         </Link>
-                        <Link to="5dcf8d67dc3bcd3de001696f">                      
-                            <p>Home</p>                      
+
+                        <Link to="5dcf8d67dc3bcd3de001696f">  
+                            <div className="lineitems">                        
+                                <p>Home</p>                      
+                            </div>
                         </Link>
-                        <Link to="5dcf9551dc3bcd3de001697e">                      
-                            <p>Sports Outdoor</p>
-                      
+
+                        <Link to="5dcf9551dc3bcd3de001697e">
+                            <div className="lineitems">                     
+                                <p>Sports Outdoor</p>
+                            </div>                        
                         </Link>
-                    </div>
+                    
                 </div>
                     
                 <Box alignSelf="end" marginTop={292} marginLeft={8} marginRight={8} padding={4}>
@@ -76,16 +91,22 @@ class SeeCartItems extends React.Component {
                         <Box align="center" padding={6}>
                             <Heading align="center" color="black" bold size="xs">Shopping Cart</Heading>
                             <Box align="center" display="flex" direction="row">
+                            <div className="lineitems"> 
                                 <Text align="center" color="black" size="xl">
                                     Total ({cartItems.length} items ):
                                 </Text>
+                            </div>
+                            <div className="lineitems"> 
                                 <Text align="center" bold size="xl" color="red">
                                     {calculatePrice(cartItems)}
                                 </Text>
+                            </div>
+                            <div className="lineitems"> 
                                 <Text >
                                     <Link to="/checkout"><Button padding={4} color="blue" text="Checkout"></Button>
                                     </Link>
-                                    </Text>
+                                </Text>
+                            </div>
                             </Box>
                         </Box>
     
