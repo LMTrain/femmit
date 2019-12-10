@@ -40,8 +40,7 @@ class SeeDeptItems extends React.Component {
     bookDeptId = () => {
         // console.log("THIS IS BOOK DEPT ===>", this.props.itemDeptId )
         // console.log("THIS IS props.itemDeptId ==>", this.props.itemDeptId) 
-        let bookToSearch = defaultBooks[Math.floor(Math.random() * defaultBooks.length)];
-        console.log("THIS IS THE BOOK TO SEARCH FOR", bookToSearch)
+        let bookToSearch = defaultBooks[Math.floor(Math.random() * defaultBooks.length)];       
         this.searchForBooks(bookToSearch);
     }
 
@@ -58,10 +57,8 @@ class SeeDeptItems extends React.Component {
         .catch(err => console.log(err));
     }
     
-    displayBooks = () => {
-      console.log("THESE ARE THE BOOK LISTs ===>", booksArray )
-      this.setState({ books: booksArray, department: "Books" })
-      console.log("THESE ARE THE BOOKs in books state ===>", "department :", this.state.department, "==>", this.state.books )
+    displayBooks = () => {      
+      this.setState({ books: booksArray, department: "Books" })      
 
       for (var i = 0;  i < booksArray.length; i++) { 
         let bookId = String(booksArray[i].etag)      
@@ -95,21 +92,17 @@ class SeeDeptItems extends React.Component {
         bookDescription = truncateString(bookDescription, 180) + "\n" + authorLabel + bookAuthor + "\n" + pulishedLabel + bookPublishDate;
 
         itemsBooksArray.push({"_id": bookId, "name": bookName, "description": bookDescription, "thumbnail": bookThumbnail, "price": bookPrice })
-      }
-      console.log("THIS ARE THE DISPLAY BOOKS==>", itemsBooksArray)
+      }     
       this.setState({
         items: itemsBooksArray,
         loadingItems: false,      
         cartItems: getCart()            
     })        
-    } 
-        
-
+    }
     
 
     async componentDidMount() {        
-        if (this.props.itemDeptId === "5dcf9519dc3bcd3de001697b") {
-        console.log("THIS IS BOOK DEPT ===>", this.props.itemDeptId )
+        if (this.props.itemDeptId === "5dcf9519dc3bcd3de001697b") {        
         this.bookDeptId();       
         } else
         
@@ -130,8 +123,7 @@ class SeeDeptItems extends React.Component {
                     }
                 }`
             }
-        });
-        console.log("THIS IS Searh ITEM From APPs", this.props.searchTerm)
+        });       
         this.setState({
             items: response.data.department.items,
             department: response.data.department.name,
@@ -141,9 +133,7 @@ class SeeDeptItems extends React.Component {
     } catch (err) {
         console.error(err);
     }
-    this.shuffle()
-    console.log(this.state.items)
-    console.log("THIS IS Searh ITEM From APPs", this.props.searchTerm)
+    this.shuffle() 
   }
   shuffle = () => {
     let itemsArray = [...this.state.items];
@@ -158,9 +148,7 @@ class SeeDeptItems extends React.Component {
     // itemsArray = [...this.state.deals];
     // this.setState({Items: deals});
     
-  };
-        
-    
+  };     
     addToCart = item => {
       const alreadyInCart = this.state.cartItems.findIndex(iitem => iitem._id === item._id);
         if (alreadyInCart === -1) {

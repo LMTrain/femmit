@@ -17,8 +17,7 @@ class Items extends React.Component {
       
   }
 
-  displayingCartItems = () => {
-    console.log("THIS SHOWS THE ITEMS IN THE CART")   
+  displayingCartItems = () => {    
     this.setState({displayingCart: false})      
   };
   
