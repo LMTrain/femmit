@@ -179,7 +179,7 @@ class SeeDeptItems extends React.Component {
     render() {
         const { department, items, cartItems, loadingItems } = this.state;
         
-        return (
+        return (          
             <Box
                 marginTop={4}
                 display="flex"
@@ -251,37 +251,48 @@ class SeeDeptItems extends React.Component {
                     </Box>
                 </Box>
                 {/* Store Department List */}
+                <React.Fragment>
+
                 <div className="lineitems">
-                <Link to="5dcf94e2dc3bcd3de0016978">
-                <Text size="ml" color="black">
-                    Automotive
-                </Text>
-                </Link>
-                <Link to="5dcf9519dc3bcd3de001697b">
-                <Text size="ml" color="black">
-                Books
-                </Text>
-                </Link>
-                <Link to="5dcf94a0dc3bcd3de0016975">
-                <Text size="ml" color="black">
-                Electronics
-                </Text>
-                </Link>
-                <Link to="5dcf9457dc3bcd3de0016972">
-                <Text size="ml" color="black">
-                Fashion
-                </Text>
-                </Link>
-                <Link to="5dcf8d67dc3bcd3de001696f">
-                <Text size="ml" color="black">
-                Home
-                </Text>
-                </Link>
-                <Link to="5dcf9551dc3bcd3de001697e">
-                <Text size="ml" color="black">
-                Sports & Outdoor
-                </Text>
-                </Link>
+                    
+                  <Link to="5dcf94e2dc3bcd3de0016978"> 
+                      <div className="lineitems">
+                          <p>Automotive</p>
+                      </div>
+                  </Link>
+
+                  <Link to="5dcf9519dc3bcd3de001697b">
+                      <div className="lineitems">                        
+                          <p>Books</p> 
+                      </div>                     
+                  </Link>
+
+                  <Link to="5dcf94a0dc3bcd3de0016975">
+                      <div className="lineitems">                      
+                          <p>Electronics</p>
+                      </div>
+                  </Link>
+
+                  <Link to="5dcf9457dc3bcd3de0016972">
+                      <div className="lineitems">                     
+                          <p>Fashion</p>
+                      </div>                        
+                  </Link>
+
+                  <Link to="5dcf8d67dc3bcd3de001696f">  
+                      <div className="lineitems">                        
+                          <p>Home</p>                      
+                      </div>
+                  </Link>
+
+                  <Link to="5dcf9551dc3bcd3de001697e">
+                      <div className="lineitems">                     
+                          <p>Sports Outdoor</p>
+                      </div>                        
+                  </Link>
+              
+                </div>
+                </React.Fragment>
                 <Box marginTop={2} >
                 <Mask shape="rounded" wash>
                     <Box padding={2}>
@@ -294,7 +305,7 @@ class SeeDeptItems extends React.Component {
                     </Box>
                 </Mask>
                 </Box>
-                </div>
+              
                 <Loader show={loadingItems} />
             </Box>
         )

@@ -70,17 +70,43 @@ form.search button[type="submit"] {
   display: flex;
   flex-direction: row;
   align-items:center;
-  font-size: 26px;
+  font-size: 24px;
   padding:.5px;
-  gap: 5px;
-  margin-top: 5px;
-  margin-left: 150px;
+  gap: 1px;
+  margin-top: 3px;
+  margin-left: 50px;
 }
 
 .lineitems :hover {
   color: green;
 }
 
+.cartitems{
+  display: flex;
+  /* flex-direction: row; */
+  /* align-items:center; */
+  font-size: 24px;
+  /* padding:.5px; */
+  /* gap: .5px; */
+  margin-top: 10px;
+  margin-right: -150px;
+  margin-left: 200px;
+}
+
+.cartitems :hover {
+  color: green;
+}
+
+.carttotal{
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  font-size: 26px;
+  padding:.5px;
+  gap: 1px;
+  margin-top: 5px;
+  margin-left: 50px;
+}
 
 /* Media Queries */
 @media (max-width: 400px) {

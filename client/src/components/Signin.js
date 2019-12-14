@@ -70,7 +70,7 @@ class Signin extends React.Component {
                 <Box
                     dangerouslySetInlineStyle={{
                         __style: {
-                          backgroundColor: 'white',
+                        //   backgroundColor: 'white',
                           
                           
                         }
@@ -83,12 +83,12 @@ class Signin extends React.Component {
                     width={550}
                 >
                     {/* Sign in Form */}
-                    <form 
+                    <form className="container max-w-md mx-auto p-8 m-2 shadow-lg rounded bg-gray"
                     style={{
                         display: 'inlineBlock',
                         textAlign: 'center',
                         maxWidth: 450,
-                        height: 180,                        
+                        height: 210,                        
                         
                         
                     }}

@@ -69,7 +69,7 @@ class Signup extends React.Component {
                 <Box
                     dangerouslySetInlineStyle={{
                         __style: {
-                          backgroundColor: 'white'
+                        //   backgroundColor: 'white'
                           
                         }
                       }}
@@ -82,7 +82,7 @@ class Signup extends React.Component {
                     
                 >
                     {/* Sign Up Form */}
-                    <form 
+                    <form className="container max-w-md mx-auto p-8 m-2 shadow-lg rounded bg-gray"
                     style={{
                         display: 'inlineBlock',
                         textAlign: 'center',
@@ -109,6 +109,7 @@ class Signup extends React.Component {
                             name="username"
                             placeholder="Username"
                             onChange={this.handleChange}
+                            className="border m-1 p-1 rounded"
                         />
                         {/* Email Address Input */}
                         <TextField
@@ -117,21 +118,24 @@ class Signup extends React.Component {
                             name="email"
                             placeholder="Email Address"
                             onChange={this.handleChange}
+                            className="border m-1 p-1 rounded"
                         />
                         {/* Password Input */}
-                        <TextField
+                        <TextField 
                             id="password"
                             type="password"
                             name="password"
                             placeholder="Password"
                             onChange={this.handleChange}
+                            className="border m-1 p-1 rounded"
                         />
                         <Button
                             inline 
                             disabled={loading} 
                             color="blue" 
                             text="Submit" 
-                            type="submit" 
+                            type="submit"
+                            className="bg-orange m-1 p-1 rounded"
                         />
                     </form>
                 </Box>
