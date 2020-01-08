@@ -5,16 +5,16 @@
       "connector": "strapi-hook-mongoose",
       "settings": {
         "client": "mongo",
-        "uri": "${process.env.DATABASE_URI || ''}",
-        "host": "${process.env.DATABASE_HOST || '127.0.0.1'}",
-        "port": "${process.env.DATABASE_PORT || 27017}",
-        "database": "${process.env.DATABASE_NAME || 'strapi-production'}",
-        "username": "${process.env.DATABASE_USERNAME || ''}",
-        "password": "${process.env.DATABASE_PASSWORD || ''}"
+        "uri": "",
+        "host": "cluster0-fyenf.mongodb.net",
+        "port": "27017",
+        "database": "server",
+        "username": "layconmm",
+        "password": "C0deme-2019"
       },
       "options": {
-        "ssl": "${process.env.DATABASE_SSL || false}",
-        "authenticationDatabase": "${process.env.DATABASE_AUTHENTICATION_DATABASE || ''}"
+        "ssl": true,
+        "authenticationDatabase": ""
       }
     }
   }

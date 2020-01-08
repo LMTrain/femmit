@@ -2,18 +2,12 @@
   "defaultConnection": "default",
   "connections": {
     "default": {
-      "connector": "strapi-hook-mongoose",
+      "connector": "mongoose",
       "settings": {
-        "client": "mongo",
-        "host": "cluster0-fyenf.mongodb.net",
-        "srv": true,
-        "port": 27017,
-        "database": "server",
-        "username": "Layconmm",
-        "password": "C0deme-2019"
+        "uri": "${process.env.DATABASE_URI}",
+        "database": "${process.env.DATABASE_NAME}"
       },
       "options": {
-        "authenticationDatabase": "",
         "ssl": true
       }
     }
