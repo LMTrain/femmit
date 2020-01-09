@@ -4,7 +4,10 @@
     "client": "cookie",
     "key": "strapi.sid",
     "prefix": "strapi:sess:",
-    "secretKeys": ["mySecretKey1", "mySecretKey2"],
+    "secretKeys": [
+      "mySecretKey1",
+      "mySecretKey2"
+    ],
     "httpOnly": true,
     "maxAge": 86400000,
     "overwrite": true,
@@ -14,7 +17,7 @@
   "logger": {
     "level": "info",
     "exposeInContext": true,
-    "requests": false
+    "requests": true
   },
   "parser": {
     "enabled": true,
