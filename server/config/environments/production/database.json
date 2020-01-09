@@ -8,7 +8,7 @@
         "uri": "",
         "host": "cluster0-fyenf.mongodb.net",
         "port": "27017",
-        "database": "server",
+        "database": "${process.env.DATABASE_NAME || 'production'}",
         "username": "layconmm",
         "password": "C0deme-2019"
       },

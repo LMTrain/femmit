@@ -14,24 +14,24 @@
     "client": "cd client && npm run start",
     "strapi": "node_modules/strapi/bin/strapi.js",
     "lint": "node_modules/.bin/eslint api/**/*.js config/**/*.js plugins/**/*.js",
-    "postinstall": "node node_modules/strapi/lib/utils/post-install.js",    
+    "postinstall": "node node_modules/strapi/lib/utils/post-install.js",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build",    
+    "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "gestalt": "^0.79.1",
+    "lodash": "^4.17.5",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5",
+    "react-scripts": ">=2.0.0",
     "react-spinners": "^0.4.5",
     "react-stripe-elements": "^2.0.1",
-    "strapi-sdk-javascript": "^0.2.1",
-    "lodash": "^4.17.5",
-    "strapi": "3.0.0-alpha.19",
+    "strapi": "^3.0.0-next.38",
     "strapi-email-sendgrid": "^3.0.0-alpha.14.5",
     "strapi-hook-mongoose": "^3.0.0-alpha.19",
+    "strapi-sdk-javascript": "^0.2.1",
     "stripe": "^7.13.0"
   },
   "author": {
@@ -50,5 +50,4 @@
     "packageManager": "npm",
     "uuid": "a67f16f4-41b0-4e59-ab98-d4eab2be86d3"
   }
-  
 }
