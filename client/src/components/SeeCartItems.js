@@ -124,7 +124,7 @@ class SeeCartItems extends React.Component {
                                 src={iitem.thumbnail}                                  
                             />
                             </Box>
-                        <Box padding={4}>
+                            <Box padding={4}>
                             <Box display="flex" direction="row">
                                 <Text bold size="sl" color="blue">
                                     {iitem.name} 
