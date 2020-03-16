@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/strapi-plugin-graphql/-/strapi-plugin-graphql-3.0.0-alpha.19.tgz",
   "_shasum": "d0bae18029d0ade6acf7bde7232d1c200c8e1d01",
   "_spec": "strapi-plugin-graphql@3.0.0-alpha.19",
-  "_where": "C:\\Udemy\\ecommerce-react-graphql-stripe\\server",
+  "_where": "C:\\Udemy\\Project\\femmit\\server",
   "author": {
     "name": "A Strapi developer"
   },

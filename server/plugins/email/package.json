@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/strapi-plugin-email/-/strapi-plugin-email-3.0.0-alpha.19.tgz",
   "_shasum": "bd0e96d21f6e42a230d611f73bb8de6b4a621f8f",
   "_spec": "strapi-plugin-email@3.0.0-alpha.19",
-  "_where": "C:\\Udemy\\ecommerce-react-graphql-stripe\\server",
+  "_where": "C:\\Udemy\\Project\\femmit\\server",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",

@@ -20,7 +20,7 @@
     "thumbnail": {
       "default": "",
       "type": "string"
-    },    
+    },
     "price": {
       "default": "",
       "type": "decimal"

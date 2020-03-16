@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/strapi-plugin-content-type-builder/-/strapi-plugin-content-type-builder-3.0.0-alpha.19.tgz",
   "_shasum": "ccc482065b7e401651ca948368d393bcff6b1206",
   "_spec": "strapi-plugin-content-type-builder@3.0.0-alpha.19",
-  "_where": "C:\\Udemy\\ecommerce-react-graphql-stripe\\server",
+  "_where": "C:\\Udemy\\Project\\femmit\\server",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",

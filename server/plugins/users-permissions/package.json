@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.0.0-alpha.19.tgz",
   "_shasum": "d66f9c70c0154f7451eb1fe2fc4414261bca6761",
   "_spec": "strapi-plugin-users-permissions@3.0.0-alpha.19",
-  "_where": "C:\\Udemy\\ecommerce-react-graphql-stripe\\server",
+  "_where": "C:\\Udemy\\Project\\femmit\\server",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",

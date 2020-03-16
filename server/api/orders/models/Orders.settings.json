@@ -14,12 +14,12 @@
       "type": "string",
       "required": true
     },
-    "postalCode": {
+    "city": {
       "default": "",
       "type": "string",
       "required": true
     },
-    "city": {
+    "postaCode": {
       "default": "",
       "type": "string",
       "required": true

@@ -11,8 +11,7 @@
   "attributes": {
     "name": {
       "default": "",
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "description": {
       "default": "",
@@ -22,7 +21,7 @@
       "model": "file",
       "via": "related",
       "plugin": "upload",
-      "required": true
+      "required": false
     },
     "items": {
       "collection": "item",

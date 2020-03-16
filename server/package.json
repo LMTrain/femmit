@@ -9,8 +9,7 @@
     "start": "node server.js",
     "strapi": "node_modules/strapi/bin/strapi.js",
     "lint": "node_modules/.bin/eslint api/**/*.js config/**/*.js plugins/**/*.js",
-    "postinstall": "node node_modules/strapi/lib/utils/post-install.js",
-    "heroku-postbuild": "npm run build"
+    "postinstall": "node node_modules/strapi/lib/utils/post-install.js"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
@@ -21,10 +20,9 @@
   },
   "dependencies": {
     "lodash": "^4.17.5",
+    "stack-trace": "0.0.10",
     "strapi": "3.0.0-alpha.19",
-    "strapi-email-sendgrid": "^3.0.0-alpha.14.5",
-    "strapi-hook-mongoose": "^3.0.0-alpha.19",
-    "stripe": "^7.13.0"
+    "strapi-hook-mongoose": "3.0.0-alpha.19"
   },
   "author": {
     "name": "A Strapi developer",
@@ -40,7 +38,7 @@
   ],
   "strapi": {
     "packageManager": "npm",
-    "uuid": "a67f16f4-41b0-4e59-ab98-d4eab2be86d3"
+    "uuid": "6ed7a9c4-ccdb-4d5c-a27b-62ac33b92198"
   },
   "engines": {
     "node": ">= 10.0.0",
