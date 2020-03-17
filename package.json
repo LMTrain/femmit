@@ -10,14 +10,13 @@
   "scripts": {
     "setup": "cd admin && npm run setup",
     "start": "SET NODE_ENV=production npm start & cd server && nodemon server.js",
-    "start:prod": "node server.js",
+    "start:prod": "cd server && node server.js",
     "client": "cd client && npm run start",
     "strapi": "node_modules/strapi/bin/strapi.js",
     "lint": "node_modules/.bin/eslint api/**/*.js config/**/*.js plugins/**/*.js",
     "postinstall": "node node_modules/strapi/lib/utils/post-install.js",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "build": "cd client && npm run build"    
   },
   "dependencies": {
     "apollo-server-koa": "^2.11.0",
