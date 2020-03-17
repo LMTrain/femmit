@@ -16,7 +16,7 @@ class _CheckoutForm extends React.Component {
         address: "",
         postalCode: "",
         city: "",
-        confirmationEmailAddress: "",
+        confirmationAddress: "",
         toast: false,
         toastMessage: "",
         orderProcessing: false,

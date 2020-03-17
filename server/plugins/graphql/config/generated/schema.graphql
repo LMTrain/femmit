@@ -271,7 +271,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Department | createDepartmentPayload | updateDepartmentPayload | deleteDepartmentPayload | DepartmentConnection | DepartmentAggregator | DepartmentGroupBy | DepartmentConnection_id | DepartmentConnectionCreatedAt | DepartmentConnectionUpdatedAt | DepartmentConnectionName | DepartmentConnectionDescription | DepartmentConnectionImage | Item | createItemPayload | updateItemPayload | deleteItemPayload | ItemConnection | ItemAggregator | ItemAggregatorSum | ItemAggregatorAvg | ItemAggregatorMin | ItemAggregatorMax | ItemGroupBy | ItemConnection_id | ItemConnectionCreatedAt | ItemConnectionUpdatedAt | ItemConnectionName | ItemConnectionDescription | ItemConnectionThumbnail | ItemConnectionPrice | ItemConnectionDepartment | Orders | createOrdersPayload | updateOrdersPayload | deleteOrdersPayload | OrdersConnection | OrdersAggregator | OrdersGroupBy | OrdersConnection_id | OrdersConnectionCreatedAt | OrdersConnectionUpdatedAt | OrdersConnectionAddress | OrdersConnectionCity | OrdersConnectionPostaCode | OrdersConnectionItems | OrdersConnectionAmount | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Department | createDepartmentPayload | updateDepartmentPayload | deleteDepartmentPayload | DepartmentConnection | DepartmentAggregator | DepartmentGroupBy | DepartmentConnection_id | DepartmentConnectionCreatedAt | DepartmentConnectionUpdatedAt | DepartmentConnectionName | DepartmentConnectionDescription | DepartmentConnectionImage | Item | createItemPayload | updateItemPayload | deleteItemPayload | ItemConnection | ItemAggregator | ItemAggregatorSum | ItemAggregatorAvg | ItemAggregatorMin | ItemAggregatorMax | ItemGroupBy | ItemConnection_id | ItemConnectionCreatedAt | ItemConnectionUpdatedAt | ItemConnectionName | ItemConnectionDescription | ItemConnectionThumbnail | ItemConnectionPrice | ItemConnectionDepartment | Orders | createOrdersPayload | updateOrdersPayload | deleteOrdersPayload | OrdersConnection | OrdersAggregator | OrdersGroupBy | OrdersConnection_id | OrdersConnectionCreatedAt | OrdersConnectionUpdatedAt | OrdersConnectionAddress | OrdersConnectionCity | OrdersConnectionPostalCode | OrdersConnectionItems | OrdersConnectionAmount | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createDepartment(input: createDepartmentInput): createDepartmentPayload
@@ -304,7 +304,7 @@ type Orders {
   updatedAt: DateTime!
   address: String!
   city: String!
-  postaCode: String!
+  postalCode: String!
   items: JSON!
   amount: Float!
 }
@@ -349,7 +349,7 @@ type OrdersConnectionItems {
   connection: OrdersConnection
 }
 
-type OrdersConnectionPostaCode {
+type OrdersConnectionPostalCode {
   key: String
   connection: OrdersConnection
 }
@@ -365,7 +365,7 @@ type OrdersGroupBy {
   updatedAt: [OrdersConnectionUpdatedAt]
   address: [OrdersConnectionAddress]
   city: [OrdersConnectionCity]
-  postaCode: [OrdersConnectionPostaCode]
+  postalCode: [OrdersConnectionPostalCode]
   items: [OrdersConnectionItems]
   amount: [OrdersConnectionAmount]
 }
@@ -373,7 +373,7 @@ type OrdersGroupBy {
 input OrdersInput {
   address: String!
   city: String!
-  postaCode: String!
+  postalCode: String!
   items: JSON!
   amount: Float!
 }
