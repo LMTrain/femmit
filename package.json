@@ -2,22 +2,6 @@
   "name": "ecommerce-react-graphql-stripe",
   "version": "0.1.0",
   "private": true,
-  "main": "./server.js",
-  "engines": {
-    "node": "12.11.1",
-    "npm": ">= 6.0.0"
-  },
-  "scripts": {
-    "setup": "cd admin && npm run setup",
-    "start": "SET NODE_ENV=production npm start & cd server && nodemon server.js",
-    "start:prod": "cd server && node server.js",
-    "client": "cd client && npm run start",
-    "strapi": "node_modules/strapi/bin/strapi.js",
-    "lint": "node_modules/.bin/eslint api/**/*.js config/**/*.js plugins/**/*.js",
-    "postinstall": "node node_modules/strapi/lib/utils/post-install.js",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build"    
-  },
   "dependencies": {
     "apollo-server-koa": "^2.11.0",
     "bcryptjs": "^2.4.3",
@@ -43,6 +27,15 @@
     "stream-to-array": "^2.3.0",
     "stripe": "^7.13.0"
   },
+ 
+  "scripts": {    
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "start:prod": "cd server && node server.js",
+    "eject": "react-scripts eject"
+  },
+  
   "author": {
     "name": "A Strapi developer",
     "email": "",
