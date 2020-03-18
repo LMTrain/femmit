@@ -6,7 +6,8 @@ import Loader from './Loader';
 // prettier ignore
 import { Box, Text, Image, Card, Button, Mask } from 'gestalt'
 import { setCart, getCart} from '../utils';
-import { Link } from 'react-router-dom';
+import DeptMenu from './DeptMenu';
+// import { Link } from 'react-router-dom';
 const apiURL = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiURL);
 
@@ -252,8 +253,9 @@ class SeeDeptItems extends React.Component {
                 </Box>
                 {/* Store Department List */}
                 <React.Fragment>
+                  <DeptMenu />
 
-                <div className="lineitems">
+                {/* <div className="lineitems">
                     
                   <Link to="5dcf94e2dc3bcd3de0016978"> 
                       <div className="lineitems">
@@ -291,7 +293,7 @@ class SeeDeptItems extends React.Component {
                       </div>                        
                   </Link>
               
-                </div>
+                </div> */}
                 </React.Fragment>
                 <Box marginTop={2} >
                 <Mask shape="rounded" wash>

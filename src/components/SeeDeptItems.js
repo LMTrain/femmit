@@ -290,10 +290,7 @@ class SeeDeptItems extends React.Component {
                           <p>Sports Outdoor</p>
                       </div>                        
                   </Link>
-              
-                </div>
-                </React.Fragment>
-                <Box marginTop={2} >
+                  <Box marginTop={2} >
                 <Mask shape="rounded" wash>
                     <Box padding={2}>
                     {/* User Cart Heading */}
@@ -305,6 +302,9 @@ class SeeDeptItems extends React.Component {
                     </Box>
                 </Mask>
                 </Box>
+                </div>
+                </React.Fragment>
+                
               
                 <Loader show={loadingItems} />
             </Box>

@@ -2,6 +2,8 @@ import React from 'react';
 import './Items.css';
 import SeeDeptItems from './SeeDeptItems';
 import SeeCartItems from './SeeCartItems';
+// import Navbar from '../components/Navbar';
+// import DeptMenu from './DeptMenu';
 
 
 
@@ -29,7 +31,8 @@ class Items extends React.Component {
     this.changeDeptIdState()     
   }
 
-  changeDeptIdState = () => {    
+  changeDeptIdState = () => { 
+    console.log("THIS IS PROPS FROM ITEMS.JS", this.props)   
     this.setState({itemDeptId: this.props.match.params.departmentId})
     
   }
@@ -39,7 +42,8 @@ class Items extends React.Component {
 
     return (
       
-      <div>        
+      <div>
+        {/* <Navbar itemDeptId={itemDeptId}/>        */}
         {displayingCart ? <SeeDeptItems itemDeptId={itemDeptId} displayingCartItems={this.displayingCartItems}  itemsSearched={itemsSearched}
         />  : <SeeCartItems />}
       

@@ -4,6 +4,7 @@ import {Container, Box, Card, Image, Text, SearchField, Icon } from 'gestalt';
 import {Link, Redirect} from 'react-router-dom';
 import Loader from './Loader';
 import SearchResult from './SearchResult';
+// import Navbar from '../components/Navbar';
 
 import './App.css';
 // import Items from './Items';
@@ -106,6 +107,8 @@ class App extends Component {
     const { searchTerm, searchTermState, loadingDepartments, departments } = this.state;
     
     return (
+      <>
+      {/* <Navbar itemDeptId={departments}/> */}
       <Container>
         {/* {departments Search Field */}
         <Box display="flex" justifyContent="center" marginTop={4}>
@@ -186,6 +189,7 @@ class App extends Component {
        {this.renderRedirect()}
       </div>
       </Container>
+      </>
     );
   }
 }

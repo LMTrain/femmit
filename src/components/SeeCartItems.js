@@ -44,7 +44,7 @@ class SeeCartItems extends React.Component {
         return (
             <React.Fragment>
 
-                <div className="cartitems">
+                {/* <div className="cartitems">
                     
                         <Link to="5dcf94e2dc3bcd3de0016978"> 
                             <div className="cartitems">
@@ -82,7 +82,7 @@ class SeeCartItems extends React.Component {
                             </div>                        
                         </Link>
                     
-                </div>
+                </div> */}
                     
                 <Box alignSelf="end" marginTop={292} marginLeft={8} marginRight={8} padding={4}>
                     
