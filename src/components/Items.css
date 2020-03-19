@@ -27,9 +27,11 @@ form.search button[type="submit"] {
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+.container {
+  width: 1400px !important;
+}
 
 .card {
-
   display: -ms-flexbox;
   display: flex; 
   flex-direction: column;
@@ -39,6 +41,29 @@ form.search button[type="submit"] {
   background-clip: border-box;
   border: 1px solid rgba(0,0,0,.125);
   border-radius: .25rem; 
+  box-shadow: 0 5px 8px #6f6666, 0 5px 8px #6f6666;
+  width: 1100px !important;
+  margin-left: 350px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.card-item {
+  display: -ms-flexbox;
+  display: flex; 
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem; 
+  box-shadow: 0 5px 8px #6f6666, 0 5px 8px #6f6666;
+  width: 700px !important;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .theme-card-body {
@@ -70,11 +95,11 @@ form.search button[type="submit"] {
   display: flex;
   flex-direction: row;
   align-items:center;
-  font-size: 24px;
-  padding:.5px;
+  font-size: 20px;
+  /* padding:.5px; */
   gap: 1px;
-  margin-top: 3px;
-  margin-left: 50px;
+  margin-top: 5px;
+  margin-left: 120px;
 }
 
 .lineitems :hover {
@@ -83,14 +108,13 @@ form.search button[type="submit"] {
 
 .cartitems{
   display: flex;
-  /* flex-direction: row; */
-  /* align-items:center; */
-  font-size: 24px;
-  /* padding:.5px; */
-  /* gap: .5px; */
-  margin-top: 10px;
-  margin-right: -150px;
-  margin-left: 200px;
+  flex-direction: row;
+  align-items:center;
+  font-size: 20px;
+  padding:.5px;
+  gap: 1px;
+  margin-top: 3px;
+  margin-left: 50px;
 }
 
 .cartitems :hover {

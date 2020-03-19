@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Image, Button } from "gestalt";
-import { getToken, clearToken, clearCart } from "../utils";
+import { getToken, clearToken, clearCart, getCart } from "../utils";
 import { NavLink, withRouter } from "react-router-dom";
 import "./Navbar.css";
 // import SearchItems from "./SearchItems";
@@ -8,17 +8,26 @@ import "./Navbar.css";
 
 
 class Navbar extends React.Component {
+  state = {   
+    cartItems: [] 
+  }
+
+  
     handleSignout = () => {
         clearToken();
         clearCart();
         this.props.history.push("/");
     };
-
+    componentDidMount() {    
+      this.setState({ cartItems: getCart()}) 
+         
+    }
     render() {
         return getToken() !== null ? 
         <AuthNav handleSignout={this.handleSignout} /> : <UnAuthNav />;        
     }
 };
+
 
 const AuthNav = ({ handleSignout }) => (
     <Box
@@ -59,7 +68,7 @@ const AuthNav = ({ handleSignout }) => (
     {/* Checkout Link */}
     <NavLink activeClassName="active" to="/checkout">
       <div className="checkout-spacing">
-        <i className="fa fa-shopping-cart">Checkout </i> 
+      <p>{cartItems.length}</p><i className="fa fa-shopping-cart">Checkout </i> 
       </div>
     </NavLink>    
 

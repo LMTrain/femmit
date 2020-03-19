@@ -11,7 +11,7 @@ const apiURL = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiURL);
 
 const hStyle = {
-  fontSize: '30px',
+  fontSize: '24px',
   fontFamily: 'calibri light',
   fontWeight: 'bold',
 };
@@ -89,7 +89,7 @@ class SeeDeptItems extends React.Component {
         }
         let authorLabel = " || Author : "
         let pulishedLabel = " || Pulished Date : "
-        bookDescription = truncateString(bookDescription, 180) + "\n" + authorLabel + bookAuthor + "\n" + pulishedLabel + bookPublishDate;
+        bookDescription = truncateString(bookDescription, 90) + "\n" + authorLabel + bookAuthor + "\n" + pulishedLabel + bookPublishDate;
 
         itemsBooksArray.push({"_id": bookId, "name": bookName, "description": bookDescription, "thumbnail": bookThumbnail, "price": bookPrice })
       }     
@@ -178,8 +178,20 @@ class SeeDeptItems extends React.Component {
     
     render() {
         const { department, items, cartItems, loadingItems } = this.state;
-        
-        return (          
+        function truncateString(str, num) {    
+          if (str.length > num && num > 3) {
+                  return str.slice(0, (num - 3)) + '...';
+              } else if (str.length > num && num <= 3) {
+                  return str.slice(0, num) + '...';
+              } else {
+              return str;
+          }    
+        }
+        return (  
+            <>
+              
+              <Loader show={loadingItems} />
+                
             <Box
                 marginTop={4}
                 display="flex"
@@ -198,23 +210,23 @@ class SeeDeptItems extends React.Component {
                         <div style={hStyle}>{department}</div>
                     </Box>
                     {/* items */}
-                    <Box
-                        dangerouslySetInlineStyle={{
-                            __style: {
-                                backgroundColor: 'white'
-                            }
-                        }}
-                        wrap
-                        shape="rounded"
-                        display="flex"
-                        justifyContent="center"
-                        padding={4}
+                <div className="container p-2 m-2 shadow-lg rounded bg-gray">
+                    <Box align="center"
+                      dangerouslySetInlineStyle={{
+                          __style: {
+                              backgroundColor: 'white'
+                          }
+                      }}
+                      shape="rounded"
+                      wrap
+                      display="flex"
+                      justifyContent="around"
                     >
                         {items.map(item => (
-                            <Box paddingY={4} margin={2} width={210} key={item._id}>
+                          <Box paddingY={4} margin={2} width={200} key={item._id}>
                             <Card
                               image={
-                                <Box height={200} width={200}>
+                                <Box height={80} width={80}>
                                   <Image
                                     fit="cover"
                                     alt="Department"
@@ -232,15 +244,15 @@ class SeeDeptItems extends React.Component {
                                 direction="column"
                               >
                                 <Box marginBottom={2}>
-                                  <Text bold size="md">
-                                    {item.name}
-                                  </Text>
+                                <Text bold size="sm">
+                                  {item.name = truncateString(item.name, 50)}
+                                </Text>
                                 </Box>
-                                  <Text>{item.description}</Text>
+                                <Text size="sm">{item.description = truncateString(item.description, 90)};</Text>
                                   <Text color="orchid">${item.price}</Text>
                                 <Box marginTop={2}>
-                                  <Text bold size="xl">
-                                    <Button onClick={() => this.addToCart(item)}
+                                  <Text size="sm">
+                                    <Button size="sm" onClick={() => this.addToCart(item)}
                                     color="blue" text="Add to Cart" />
                                   </Text>
                                 </Box>
@@ -249,65 +261,12 @@ class SeeDeptItems extends React.Component {
                           </Box>                        
                         ))}
                     </Box>
+              </div>
                 </Box>
                 {/* Store Department List */}
-                <React.Fragment>
-
-                <div className="lineitems">
-                    
-                  <Link to="5dcf94e2dc3bcd3de0016978"> 
-                      <div className="lineitems">
-                          <p>Automotive</p>
-                      </div>
-                  </Link>
-
-                  <Link to="5dcf9519dc3bcd3de001697b">
-                      <div className="lineitems">                        
-                          <p>Books</p> 
-                      </div>                     
-                  </Link>
-
-                  <Link to="5dcf94a0dc3bcd3de0016975">
-                      <div className="lineitems">                      
-                          <p>Electronics</p>
-                      </div>
-                  </Link>
-
-                  <Link to="5dcf9457dc3bcd3de0016972">
-                      <div className="lineitems">                     
-                          <p>Fashion</p>
-                      </div>                        
-                  </Link>
-
-                  <Link to="5dcf8d67dc3bcd3de001696f">  
-                      <div className="lineitems">                        
-                          <p>Home</p>                      
-                      </div>
-                  </Link>
-
-                  <Link to="5dcf9551dc3bcd3de001697e">
-                      <div className="lineitems">                     
-                          <p>Sports Outdoor</p>
-                      </div>                        
-                  </Link>
-                  <Box marginTop={2} >
-                <Mask shape="rounded" wash>
-                    <Box padding={2}>
-                    {/* User Cart Heading */}
-                    <i className="fa fa-shopping-cart"> {cartItems.length}</i>
-                        <Button onClick={() => this.props.displayingCartItems()}
-                            color="blue" text="View Cart"
-                        />                                              
-                        
-                    </Box>
-                </Mask>
-                </Box>
-                </div>
-                </React.Fragment>
-                
               
-                <Loader show={loadingItems} />
             </Box>
+          </>
         )
     }             
 }

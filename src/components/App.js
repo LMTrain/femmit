@@ -105,7 +105,15 @@ class App extends Component {
 
   render() {
     const { searchTerm, searchTermState, loadingDepartments, departments } = this.state;
-    
+    function truncateString(str, num) {    
+      if (str.length > num && num > 3) {
+              return str.slice(0, (num - 3)) + '...';
+          } else if (str.length > num && num <= 3) {
+              return str.slice(0, num) + '...';
+          } else {
+          return str;
+      }    
+    }
     return (
       <>
       {/* <Navbar itemDeptId={departments}/> */}
@@ -172,10 +180,10 @@ class App extends Component {
                   justifyContent="center"
                   direction="column"
                 >
-                  <Text bold size="md">
-                      {department.name}
+                  <Text bold size="sm">
+                    {department.name = truncateString(department.name, 50)}
                   </Text>
-                    <Text>{department.description}</Text>
+                  <Text size="sm">{department.description = truncateString(department.description, 90)};</Text>
                 </Box>
               </Card>
             </Box>
