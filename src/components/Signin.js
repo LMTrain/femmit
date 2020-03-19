@@ -8,7 +8,7 @@ const strapi = new Strapi(apiURL);
 
 
 const hStyle = {
-    fontSize: '30px',
+    fontSize: '22px',
     fontFamily: 'calibri light',
     fontWeight: 'bold',
     color: 'black',
@@ -97,14 +97,16 @@ class Signin extends React.Component {
                         {/* Sign in Form Heading */}
                         <Box
                             marginBottom={2}
+                            marginTop={-3}
                             display="flex"
                             direction="column"
                             alignItems='center'
                         >
-                            <div style={hStyle} color="black" >Welcome Back!</div>
+                            <div style={hStyle} color="black" >Sign In</div>
                                                      
                         </Box>
                         {/* Username Input */}
+                        <Box  marginBottom={2}>
                         <TextField
                             id="username"
                             type="text"
@@ -112,6 +114,7 @@ class Signin extends React.Component {
                             placeholder="Username"
                             onChange={this.handleChange}
                         />                   
+                        </Box>
                         {/* Password Input */}
                         <TextField
                             id="password"
@@ -120,13 +123,15 @@ class Signin extends React.Component {
                             placeholder="Password"
                             onChange={this.handleChange}
                         />
-                        <Button
-                            inline 
-                            disabled={loading} 
-                            color="blue" 
-                            text="Submit" 
-                            type="submit" 
-                        />
+                        <Box margiginTop={5} paddingY={2}>
+                            <Button
+                                inline 
+                                disabled={loading} 
+                                color="blue" 
+                                text="Submit" 
+                                type="submit" 
+                            />
+                        </Box>
                     </form>
                 </Box>
                 <ToastMessage show={toast} message={toastMessage}/>
