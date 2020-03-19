@@ -257,6 +257,7 @@ margin-top: -65px;
   color: white;
   font-size: 22px;
   margin-right: 80px;
+  display: flex;
   }
 
   .checkout-spacing :hover {

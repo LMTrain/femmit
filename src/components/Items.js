@@ -109,7 +109,7 @@ class Items extends React.Component {
         {/* User Cart Heading */}
         <Button size="sm" onClick={() => this.displayingCartItems()}
             color="blue" text="View Cart"
-        /><p>{cartItems.length}</p><i className="fa fa-shopping-cart"></i>
+        />
       </Box>
     </Mask>
   </Box>
