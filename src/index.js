@@ -45,5 +45,5 @@ const Root = () => (
     </Router>
 );
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById('root'))
 registerServiceWorker();

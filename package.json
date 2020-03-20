@@ -27,13 +27,17 @@
     "stream-to-array": "^2.3.0",
     "stripe": "^7.13.0"
   },
+  
   "scripts": {
-    "start": "react-scripts start",
+    "start": "if-env NODE_ENV=production && yarn run start:prod || yarn run start:dev",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "start:prod": "cd server && node server.js",
+    "start:dev": "cd server && node server.js",
+    "client": "react-scripts start",
     "eject": "react-scripts eject"
   },
+
   "eslintConfig": {
     "extends": "react-app"
   },

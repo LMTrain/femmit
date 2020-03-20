@@ -4,9 +4,9 @@ import './Items.css';
 import API from '../utils/API';
 import Loader from './Loader';
 // prettier ignore
-import { Box, Text, Image, Card, Button, Mask } from 'gestalt'
+import { Box, Text, Image, Card, Button } from 'gestalt'
 import { setCart, getCart} from '../utils';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 const apiURL = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiURL);
 
@@ -101,7 +101,8 @@ class SeeDeptItems extends React.Component {
     }
     
 
-    async componentDidMount() {        
+    async componentDidMount() {  
+        // console.log(this.props)      
         if (this.props.itemDeptId === "5dcf9519dc3bcd3de001697b") {        
         this.bookDeptId();       
         } else
@@ -148,25 +149,24 @@ class SeeDeptItems extends React.Component {
     // itemsArray = [...this.state.deals];
     // this.setState({Items: deals});
     
-  };     
-    addToCart = item => {
-      const alreadyInCart = this.state.cartItems.findIndex(iitem => iitem._id === item._id);
-        if (alreadyInCart === -1) {
-            const updatedItems = this.state.cartItems.concat({
-            ...item,
-            quantity: 1
-            });
-            this.setState({cartItems: updatedItems }, () => setCart(updatedItems));
-            console.log(this.state.cartItems);
-        } else {
-            const updatedItems = [...this.state.cartItems];
-            updatedItems[alreadyInCart].quantity += 1;
-            this.setState({cartItems: updatedItems },() => setCart(updatedItems));
-            console.log(this.state.cartItems);
-
-        }
-
-    };
+  };
+      
+  addToCart = item => {
+    const alreadyInCart = this.state.cartItems.findIndex(iitem => iitem._id === item._id);
+      if (alreadyInCart === -1) {
+          const updatedItems = this.state.cartItems.concat({
+          ...item,
+          quantity: 1
+          });
+          this.setState({cartItems: updatedItems }, () => setCart(updatedItems));
+          console.log(this.state.cartItems);
+      } else {
+          const updatedItems = [...this.state.cartItems];
+          updatedItems[alreadyInCart].quantity += 1;
+          this.setState({cartItems: updatedItems },() => setCart(updatedItems));
+          console.log(this.state.cartItems);
+    }
+  };
     
 
     deleteItemsFromCart = itemToDeleteId => {
@@ -177,7 +177,7 @@ class SeeDeptItems extends React.Component {
     };
     
     render() {
-        const { department, items, cartItems, loadingItems } = this.state;
+        const { department, items, loadingItems } = this.state;
         function truncateString(str, num) {    
           if (str.length > num && num > 3) {
                   return str.slice(0, (num - 3)) + '...';
@@ -188,8 +188,7 @@ class SeeDeptItems extends React.Component {
           }    
         }
         return (  
-            <>
-              
+            <>              
               <Loader show={loadingItems} />
                 
             <Box
@@ -252,7 +251,7 @@ class SeeDeptItems extends React.Component {
                                   <Text color="orchid">${item.price}</Text>
                                 <Box marginTop={2}>
                                   <Text size="sm">
-                                    <Button size="sm" onClick={() => this.addToCart(item)}
+                                    <Button size="sm" onClick={() => this.props.addToCart(item)}
                                     color="blue" text="Add to Cart" />
                                   </Text>
                                 </Box>
@@ -261,7 +260,7 @@ class SeeDeptItems extends React.Component {
                           </Box>                        
                         ))}
                     </Box>
-              </div>
+                  </div>
                 </Box>
                 {/* Store Department List */}
               

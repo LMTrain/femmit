@@ -43,7 +43,7 @@ class App extends Component {
   
 
   // Connect Graphql using Strapi SDK
-  async componentDidMount() {
+  async componentDidMount() {   
     try {
 
       const response = await strapi.request("POST", "/graphql", {
@@ -103,7 +103,7 @@ class App extends Component {
     
   }
 
-  render() {
+  render() {    
     const { searchTerm, searchTermState, loadingDepartments, departments } = this.state;
     function truncateString(str, num) {    
       if (str.length > num && num > 3) {

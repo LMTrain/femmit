@@ -1,7 +1,7 @@
 import React from 'react';
 import './Items.css';
-import { Box, Text, Image, Button } from 'gestalt'
-import {calculatePrice, setCart, getCart} from '../utils';
+import { Box, Text, Image, Button, Column } from 'gestalt'
+import {calculateTotalItems, calculatePrice, setCart, getCart} from '../utils';
 import { Link } from 'react-router-dom';
 import './Items.css';
 
@@ -40,10 +40,27 @@ class SeeCartItems extends React.Component {
 
     };
 
+    countItemToDelete = itemToDeleteId => {
+        // for (var i = 0;  i < this.state.cartItems.length; i++) {      
+        //     if (allUsersBooks[i].bookmember === mId) {
+        //         booksFind.push(allUsersBooks[i])
+        //         userFavBooks = userFavBooks + 1;            
+        //         this.setState({userBooks:booksFind, 
+        //                       userfavBooksCount: userFavBooks,
+        //                       showBookState: false,
+        //                       showFavBooks: true
+        //                     })
+        //     }
+        // } 
+    }
+
     deleteItemsFromCart = itemToDeleteId => {
+        console.log(this.state.cartItems)
         const filteredItems = this.state.cartItems.filter(
             iitem => iitem._id !== itemToDeleteId
         );
+        console.log("THIS IS ITEM TO DELETE", itemToDeleteId)
+        // if (itemToDeleteId )
         this.setState({ cartItems: filteredItems }, () => setCart(filteredItems));
     };
 
@@ -51,47 +68,59 @@ class SeeCartItems extends React.Component {
         const { cartItems } = this.state;
         return (
             <React.Fragment>
-                {/* <Box marginTop={4} display="flex" direction="column" alignItems="center">
-                    <div className="cartitems">
-                        
-                        <Link to="5dcf94e2dc3bcd3de0016978"> 
-                            <div className="cartitems">
-                                <p>Automotive</p>
-                            </div>
-                        </Link>
-
-                        <Link to="5dcf9519dc3bcd3de001697b">
-                            <div className="cartitems">                        
-                                <p>Books</p> 
-                            </div>                     
-                        </Link>
-
-                        <Link to="5dcf94a0dc3bcd3de0016975">
-                            <div className="cartitems">                      
-                                <p>Electronics</p>
-                            </div>
-                        </Link>
-
-                        <Link to="5dcf9457dc3bcd3de0016972">
-                            <div className="cartitems">                     
-                                <p>Fashion</p>
-                            </div>                        
-                        </Link>
-
-                        <Link to="5dcf8d67dc3bcd3de001696f">  
-                            <div className="cartitems">                        
-                                <p>Home</p>                      
-                            </div>
-                        </Link>
-
-                        <Link to="5dcf9551dc3bcd3de001697e">
-                            <div className="cartitems">                     
-                                <p>Sports Outdoor</p>
-                            </div>                        
-                        </Link>
-                        
-                    </div>
-                </Box> */}
+                <Box display="flex" direction="row" marginLeft={10}>
+            <Column span={2}>
+              <Box>
+                <Text color="white"></Text>
+              </Box>
+            </Column>
+                       
+            <div className="lineitems">
+              <Link to="5dcf94e2dc3bcd3de0016978"> 
+                  <div >
+                      <p>Automotive</p>
+                  </div>
+              </Link>
+            </div>       
+            <div className="lineitems">
+              <Link to="5dcf9519dc3bcd3de001697b">
+                  <div >                        
+                      <p>Books</p> 
+                  </div>                     
+              </Link>
+            </div>
+            <div className="lineitems">
+              <Link to="5dcf94a0dc3bcd3de0016975">
+                  <div>                      
+                      <p>Electronics</p>
+                  </div>
+              </Link>
+            </div>
+            <div className="lineitems">
+              <Link to="5dcf9457dc3bcd3de0016972">
+                  <div >                     
+                      <p>Fashion</p>
+                  </div>                        
+              </Link>
+            </div>
+            <div className="lineitems">
+              <Link to="5dcf8d67dc3bcd3de001696f">  
+                  <div >                        
+                      <p>Home</p>                      
+                  </div>
+              </Link>
+            </div>
+            <div className="lineitems">
+              <Link to="5dcf9551dc3bcd3de001697e">
+                  <div>                     
+                      <p>Sports Outdoor</p>{" "}
+                  </div>                        
+              </Link>
+            </div>           
+            <div className="lineitems">              
+                <p>{" "}{calculateTotalItems(cartItems)}{" "}<i className="fa fa-shopping-cart">{" "}</i> </p>
+            </div> 
+          </Box>
                     
                 <Box alignSelf="end" marginTop={292} marginLeft={8} marginRight={8} padding={4}>
                     <Box margin={2}>
@@ -117,9 +146,9 @@ class SeeCartItems extends React.Component {
                                     <Box key={iitem._id} display="flex" direction="row" marginTop={2} marginLeft={3} paddingLeft={2} paddingRight={2}>
                                         {/* <Card width={300}>                           */}
                                         <Box display="flex" direction="row">
-                                            <Box height={80} width={80} >
+                                            <Box  height={120} width={80}>
                                                 <Image
-                                                    // fit="cover"
+                                                    fit="cover"
                                                     alt="item"
                                                     naturalHeight={1}
                                                     naturalWidth={1}
@@ -128,51 +157,65 @@ class SeeCartItems extends React.Component {
                                             </Box>
                                         </Box>
                                         <Box padding={2}>
-                                            <Box display="flex" direction="row">
+                                            <Box display="flex" direction="row" marginBottom={5}>
                                                 <Text bold size="sl" color="blue">
                                                     {iitem.name}                                                     
                                                 </Text>
-                                                <Box marginLeft={10} paddingLeft={0} paddingRight={0}>
-                                                    <Button 
-                                                        size="sm"
-                                                        color="red"
-                                                        text= "x"
-                                                        onClick={() => this.deleteItemsFromCart(iitem._id)}
-                                                    />
-                                                </Box> 
+                                            </Box>
+                                            {/* <Box display="flex" direction="row">
+                                                <Text size="sm" color="white">
+                                                    Items                                                  
+                                                </Text>
+                                            </Box> */}
+                                            <Box display="flex" direction="row">
+                                                <Text color="orchid" size="sm">
+                                                    Unit Price: ${iitem.price}
+                                                </Text>                                               
                                             </Box>
                                             <Box display="flex" direction="row">
-                                                <Text>
+                                                <Text color="green" size="sm">
                                                     Qty: {iitem.quantity}
-                                                </Text>                                                
-                                            </Box>                                                                          
-                                            <Text>
+                                                </Text>                                                                                                                             
+                                            </Box>
+                                            <Text color="green" size="sm">
                                                 Price: ${(iitem.quantity * iitem.price).toFixed(2)}
-                                            </Text>                                            
+                                            </Text>
+                                            <Box  display="flex" direction="row">
+                                                <div className="delete-button">                                                
+                                                    <button onClick={() => this.deleteItemsFromCart(iitem._id)}>Delete</button>                                  
+                                                </div> 
+                                                <div className="save-for-later">                                                
+                                                    <p>Save for later</p>                                  
+                                                </div>
+                                                <div className="save-for-later">                                                
+                                                    <p>Compare with similar item</p>                                  
+                                                </div>                                                              
+                                            </Box>  
                                         </Box>
                                     </Box>
                                 </div>
                             ))}
                         </Box>
-                        <Box column={6} marginLeft={10} marginRightt={-1} marginTop={10} paddingLeft={0} paddingRight={0}>
-                            <Box align="center" display="flex" direction="column">
-                                <div className="carttotal"> 
-                                    <Text align="center" bold color="black" size="sm">
-                                        Total ({cartItems.length} items )
-                                    </Text>
-                                </div>
-                                <div className="carttotal"> 
-                                    <Text align="center" bold size="xl" color="red">
-                                        {calculatePrice(cartItems)}
-                                    </Text>
-                                </div>
-                                <div className="carttotal"> 
-                                    <Text >
-                                        <Link to="/checkout"><Button padding={2} color="blue" text="Checkout"></Button>
-                                        </Link>
-                                    </Text>
-                                </div>                                       
-                            </Box>
+                        <Box column={4} marginLeft={10} marginTop={10} width={150}>
+                        <div className="carttotal">                            
+                                <Box align="center" display="flex" direction="column" width={550}>
+                                    <div className="carttotal"> 
+                                        <Text bold color="black" size="sm">                                        
+                                            Subtotal ({calculateTotalItems(cartItems)} items ){": "}
+                                        </Text>
+                                        <Text align="center" bold size="md" color="red">
+                                            {calculatePrice(cartItems)}
+                                            
+                                        </Text>
+                                    </div>                                
+                                    <Box width={250}> 
+                                        <Text >
+                                            <Link to="/checkout"><Button padding={2} size="md" width={550} color="blue" text="Checkout"></Button>
+                                            </Link>
+                                        </Text>
+                                    </Box>                                       
+                                </Box>                          
+                            </div>
                         </Box>                                             
                     </Box>
                 </div>               

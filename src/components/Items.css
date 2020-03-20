@@ -61,6 +61,7 @@ form.search button[type="submit"] {
   border-radius: .25rem; 
   box-shadow: 0 5px 8px #6f6666, 0 5px 8px #6f6666;
   width: 700px !important;
+  height: 140px;
   margin-left: 20px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -123,15 +124,39 @@ form.search button[type="submit"] {
   color: green;
 }
 
+.delete-button {
+  font-size: 14px;
+  padding:.5px;
+  margin-left: 150px;
+  margin-top: 8px;
+}
+
+.delete-button :hover {
+  color: red;
+}
+
+.save-for-later {
+  font-size: 14px;
+  padding:.5px;
+  margin-left: 50px;
+  margin-top: 8px;
+}
+
+.save-for-later :hover {
+  color: green;
+  cursor: pointer;
+}
+
 .carttotal{
   display: flex;
   flex-direction: row;
   align-items:center;
   font-size: 26px;
-  padding:.5px;
+  /* padding:.5px; */
   gap: 1px;
   margin-top: 5px;
   margin-left: 50px;
+  text-align: center;
 }
 
 /* Media Queries */

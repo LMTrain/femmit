@@ -14,6 +14,12 @@ export const calculateAmount = iitems => {
   
 };
 
+export const calculateTotalItems = iitems => {  
+  return Number(iitems
+    .reduce((acc, iitem) => acc + iitem.quantity, 0));
+};
+
+
 /* Cart */
 export const setCart = (value, cartKey = CART_KEY) => {
     if (localStorage) {
