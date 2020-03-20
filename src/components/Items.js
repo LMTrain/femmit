@@ -28,6 +28,8 @@ class Items extends React.Component {
   };
   
   addToCart = item => {
+    const alreadyInCartToDel = this.state.cartItems.find(allItems => allItems._id === item._id);
+    console.log("THIS IS ALREADY IN CART", alreadyInCartToDel);
     const alreadyInCart = this.state.cartItems.findIndex(iitem => iitem._id === item._id);
       if (alreadyInCart === -1) {
           const updatedItems = this.state.cartItems.concat({

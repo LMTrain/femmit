@@ -23,7 +23,7 @@ class SeeCartItems extends React.Component {
         this.setState({ cartItems: getCart() })        
     }    
     
-    addToCart = item => {
+    addToCart = item => {        
       const alreadyInCart = this.state.cartItems.findIndex(iitem => iitem._id === item._id);
         if (alreadyInCart === -1) {
             const updatedItems = this.state.cartItems.concat({
@@ -41,21 +41,26 @@ class SeeCartItems extends React.Component {
     };
 
     countItemToDelete = itemToDeleteId => {
-        // for (var i = 0;  i < this.state.cartItems.length; i++) {      
-        //     if (allUsersBooks[i].bookmember === mId) {
-        //         booksFind.push(allUsersBooks[i])
-        //         userFavBooks = userFavBooks + 1;            
-        //         this.setState({userBooks:booksFind, 
-        //                       userfavBooksCount: userFavBooks,
-        //                       showBookState: false,
-        //                       showFavBooks: true
-        //                     })
-        //     }
-        // } 
+        const alreadyInCartToDel = this.state.cartItems.findIndex(allItems => allItems._id === itemToDeleteId);
+       
+        if (alreadyInCartToDel !== 1) {
+            console.log("THIS IS ALREADY IN CART", alreadyInCartToDel);
+            this.deleteItemsFromCart(itemToDeleteId);
+            // const updatedItems = this.state.cartItems.concat({
+            // ...item,
+            // quantity: 1
+            // });
+            // this.setState({cartItems: updatedItems }, () => setCart(updatedItems));
+        } else {
+            console.log( this.state.cartItems );
+            this.deleteItemsFromCart(itemToDeleteId);
+            // const updatedItems = [...this.state.cartItems];
+            // updatedItems[alreadyInCart].quantity += 1;
+            // this.setState({cartItems: updatedItems },() => setCart(updatedItems));
+        }
     }
 
-    deleteItemsFromCart = itemToDeleteId => {
-        console.log(this.state.cartItems)
+    deleteItemsFromCart = itemToDeleteId => {       
         const filteredItems = this.state.cartItems.filter(
             iitem => iitem._id !== itemToDeleteId
         );
@@ -182,7 +187,7 @@ class SeeCartItems extends React.Component {
                                             </Text>
                                             <Box  display="flex" direction="row">
                                                 <div className="delete-button">                                                
-                                                    <button onClick={() => this.deleteItemsFromCart(iitem._id)}>Delete</button>                                  
+                                                    <button onClick={() => this.countItemToDelete(iitem._id)}>Delete</button>                                  
                                                 </div> 
                                                 <div className="save-for-later">                                                
                                                     <p>Save for later</p>                                  
