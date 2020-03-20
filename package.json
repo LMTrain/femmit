@@ -29,11 +29,10 @@
   },
   
   "scripts": {
-    "start": "if-env NODE_ENV=production && yarn run start:prod || yarn run start:dev",
+    "start": "NODE_ENV=production && yarn run start:prod",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "start:prod": "cd server && node server.js",
-    "start:dev": "cd server && node server.js",
     "client": "react-scripts start",
     "eject": "react-scripts eject"
   },
