@@ -2,6 +2,7 @@
   "name": "ecommerce-react-graphql-stripe",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "apollo-server-koa": "^2.11.0",
     "bcryptjs": "^2.4.3",
@@ -29,13 +30,10 @@
   },
   
   "scripts": {
-    "start": "if-env NODE_ENV=production && yarn run start:prod || yarn run start:dev",
-    "start:prod": "cd server && node server.js",
-    "start:dev": "concurrently \"server/*'\" \"yarn run server\" 'client/*'\" \"yarn run client\"",
-    "server":  "cd server && node server.js",
-    "client": "cd client && yarn run start",   
-    "install": "cd client && yarn run install",
-    "build": "cd client && yarn run build"    
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   
   "eslintConfig": {

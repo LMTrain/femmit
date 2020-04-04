@@ -1,5 +1,5 @@
 {
-  "host": "localhost",
+  "host": "herokuapp.com",
   "port": "${process.env.PORT || 1337}",
   "production": true,
   "proxy": {
@@ -12,6 +12,7 @@
     "enabled": false
   },
   "admin": {
-    "autoOpen": false
+    "autoOpen": false,
+    "path": "/dashboard"
   }
 }
