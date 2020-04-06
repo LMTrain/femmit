@@ -29,7 +29,7 @@
   },
   
   "scripts": {
-    "start": "if-env NODE_ENV=production && yarn run start:prod || yarn run start:dev",
+    "start": "NODE_ENV=production && yarn run start:prod || yarn run start:dev",
     "start:prod": "cd server && node server.js",
     "start:dev": "concurrently \"server/*'\" \"yarn run server\" 'client/*'\" \"yarn run client\"",
     "server":  "cd server && node server.js",
