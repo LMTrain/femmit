@@ -3,6 +3,7 @@ import Strapi from 'strapi-sdk-javascript/build/main';
 import './Items.css';
 import API from '../utils/API';
 import Loader from './Loader';
+import ItemModalDetails from '../components/ItemModalDetails'
 // prettier ignore
 import { Box, Text, Image, Card, Button } from 'gestalt'
 import { setCart, getCart} from '../utils';
@@ -22,6 +23,7 @@ var bookPrice = ""
 var bookThumbnail = ""
 var ShuffledDatas = []
 var shuffleData = []
+var detailsDisplay = []
 
 const defaultBooks = ["Wars of Law", "Among the Valiant", "Religion", "The Fall of Western Civilization", "Destruction of Black Civilization", "Sex in Antiquity", "Wars", "food", "School", "Country", "Music", "Friends", "Family", "Baby", "Politics"]
 class SeeDeptItems extends React.Component {
@@ -32,6 +34,7 @@ class SeeDeptItems extends React.Component {
         cartItems: [],
         search: "",
         books: [],
+        itemDetails: [],
         displayingCart: false,
         loadingItems: true
     }
@@ -124,13 +127,15 @@ class SeeDeptItems extends React.Component {
                     }
                 }`
             }
-        });       
+        }); 
+        detailsDisplay = response.data.department.items    
         this.setState({
             items: response.data.department.items,
             department: response.data.department.name,
             loadingItems: false,
             cartItems: getCart()            
-        })        
+        })
+        console.log(detailsDisplay)       
     } catch (err) {
         console.error(err);
     }
@@ -175,18 +180,30 @@ class SeeDeptItems extends React.Component {
         );
         this.setState({ cartItems: filteredItems }, () => setCart(filteredItems));
     };
+
+    handleDetailsSubmit = (id) => { 
+      // Find the id in the state    
+      const itemDetail = detailsDisplay.find((itemDetailed) => itemDetailed._id === id);    
+      this.setState({itemDetails: [itemDetail], 
+                    // detailsItem: [item], 
+                    // showItemDetail: true,
+                    // showCartItems: false,
+                    // redirect: true
+                  })            
+    };
     
     render() {
-        const { department, items, loadingItems } = this.state;
-        function truncateString(str, num) {    
-          if (str.length > num && num > 3) {
-                  return str.slice(0, (num - 3)) + '...';
-              } else if (str.length > num && num <= 3) {
-                  return str.slice(0, num) + '...';
-              } else {
-              return str;
-          }    
-        }
+      function truncateString(str, num) {    
+        if (str.length > num && num > 3) {
+                return str.slice(0, (num - 3)) + '...';
+            } else if (str.length > num && num <= 3) {
+                return str.slice(0, num) + '...';
+            } else {
+            return str;
+        }    
+      }
+      const { department, items, loadingItems, itemDetails } = this.state;
+       
         return (  
             <>              
               <Loader show={loadingItems} />
@@ -209,7 +226,7 @@ class SeeDeptItems extends React.Component {
                         <div style={hStyle}>{department}</div>
                     </Box>
                     {/* items */}
-                <div className="container p-2 m-2 shadow-lg rounded bg-gray">
+                  <div className="container p-2 m-2 shadow-lg rounded bg-gray">
                     <Box align="center"
                       dangerouslySetInlineStyle={{
                           __style: {
@@ -222,7 +239,13 @@ class SeeDeptItems extends React.Component {
                       justifyContent="around"
                     >
                         {items.map(item => (
-                          <Box paddingY={4} margin={2} width={200} key={item._id}>
+                          <Box paddingY={4} margin={2} width={200} key={item._id}>                       
+                            <div onClick={() => this.handleDetailsSubmit(item._id)} title="See Details">
+                             <ItemModalDetails  
+                                itemDetails={itemDetails}
+                                                                    
+                              />
+                            </div>
                             <Card
                               image={
                                 <Box height={80} width={80}>
@@ -233,6 +256,7 @@ class SeeDeptItems extends React.Component {
                                     naturalWidth={1}
                                     src={item.thumbnail}                                  
                                   />
+                                 
                                 </Box>
                               }
                             >
@@ -243,12 +267,12 @@ class SeeDeptItems extends React.Component {
                                 direction="column"
                               >
                                 <Box marginBottom={2}>
-                                <Text bold size="sm">
-                                  {item.name = truncateString(item.name, 50)}
-                                </Text>
+                                  <Text bold size="sm">
+                                    {item.name = truncateString(item.name, 50)}
+                                  </Text>
                                 </Box>
-                                <Text size="sm">{item.description = truncateString(item.description, 90)};</Text>
-                                  <Text color="orchid">${item.price}</Text>
+                                <Text size="sm">{item.description = truncateString(item.description, 90) };</Text>
+                                <Text color="orchid">${item.price}</Text>
                                 <Box marginTop={2}>
                                   <Text size="sm">
                                     <Button size="sm" onClick={() => this.props.addToCart(item)}

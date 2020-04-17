@@ -1,43 +1,53 @@
 {
-  "name": "ecommerce-react-graphql-stripe",
+  "name": "femmit",
   "version": "0.1.0",
   "private": true,
+  "description": "A Strapi application.",
+  "main": "./server.js",
   "dependencies": {
     "apollo-server-koa": "^2.11.0",
+    "babel-eslint": "10.1.0",
+    "babel-loader": "8.1.0",
     "bcryptjs": "^2.4.3",
     "gestalt": "^0.79.1",
     "graphql-depth-limit": "^1.1.0",
     "graphql-type-datetime": "^0.2.4",
     "graphql-type-json": "^0.3.1",
+    "if-env": "^1.0.4",
     "immutable": "^4.0.0-rc.12",
     "jsonwebtoken": "^8.5.1",
     "koa2-ratelimit": "^0.9.0",
     "lodash": "^4.17.5",
     "purest": "^3.1.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": ">=2.0.0",
     "react-spinners": "^0.4.5",
     "react-stripe-elements": "^2.0.1",
-    "strapi": "^3.0.0-next.38",
+    "reactstrap": "^8.4.1",
+    "stack-trace": "0.0.10",
+    "strapi": "3.0.0-alpha.19",
     "strapi-email-sendgrid": "^3.0.0-alpha.14.5",
     "strapi-hook-mongoose": "^3.0.0-alpha.19",
     "strapi-sdk-javascript": "^0.2.1",
     "stream-to-array": "^2.3.0",
-    "stripe": "^7.13.0"
+    "stripe": "^7.13.0",
+    "webpack": "4.42.0"
   },
-  
   "scripts": {
-    "start": "NODE_ENV=production && yarn run start:prod || yarn run start:dev",
-    "start:prod": "cd server && node server.js",
-    "start:dev": "concurrently \"server/*'\" \"yarn run server\" 'client/*'\" \"yarn run client\"",
-    "server":  "cd server && node server.js",
-    "client": "cd client && yarn run start",   
-    "install": "cd client && yarn run install",
-    "build": "cd client && yarn run build"    
+    "setup": "cd admin && npm run setup",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "strapi": "node_modules/strapi/bin/strapi.js",
+    "lint": "node_modules/.bin/eslint api/**/*.js config/**/*.js plugins/**/*.js",
+    "postinstall": "node node_modules/strapi/lib/utils/post-install.js",
+    "heroku-postbuild": "npm run build"
   },
-  
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -52,5 +62,35 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "babel-eslint": "10.1.0",
+    "concurrently": "^5.1.0",
+    "eslint": "6.6.0",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-react": "^7.7.0",
+    "nodemon": "^1.18.7"
+  },
+  "author": {
+    "name": "A Strapi developer",
+    "email": "",
+    "url": ""
+  },
+  "maintainers": [
+    {
+      "name": "A Strapi developer",
+      "email": "",
+      "url": ""
+    }
+  ],
+  "strapi": {
+    "packageManager": "npm",
+    "uuid": "6ed7a9c4-ccdb-4d5c-a27b-62ac33b92198"
+  },
+  "engines": {
+    "node": ">= 10.0.0",
+    "npm": ">= 6.0.0"
+  },
+  "license": "MIT"
 }

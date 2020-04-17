@@ -11,7 +11,6 @@ class Navbar extends React.Component {
   state = {   
     cartItems: [] 
   }
-
   
     handleSignout = () => {
         clearToken();

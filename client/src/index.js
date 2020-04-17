@@ -10,6 +10,7 @@ import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Checkout from './components/Checkout';
 import Items from "./components/Items";
+import Automotive from "./components/Automotive"
 // import SearchItems from "./components/SearchItems";
 import SearchResult from "./components/SearchResult"
 
@@ -40,6 +41,7 @@ const Root = () => (
                 <Route component={Signup} path="/signup" />
                 <PrivateRoute component={Checkout} path="/checkout" />                
                 <Route component={Items} path="/:departmentId" />
+                <Route component={Automotive} path="/5dcf94e2dc3bcd3de0016978" />
             </Switch>           
         </React.Fragment>
     </Router>
