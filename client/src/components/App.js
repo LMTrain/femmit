@@ -105,15 +105,27 @@ class App extends Component {
 
   render() {    
     const { searchTerm, searchTermState, loadingDepartments, departments } = this.state;
-    function truncateString(str, num) {    
-      if (str.length > num && num > 3) {
-              return str.slice(0, (num - 3)) + '...';
-          } else if (str.length > num && num <= 3) {
-              return str.slice(0, num) + '...';
-          } else {
-          return str;
-      }    
-    }
+    // function truncateString(str, num) {    
+    //   if (str.length > num && num > 3) {
+    //           return str.slice(0, (num - 3)) + '...';
+    //       } else if (str.length > num && num <= 3) {
+    //           return str.slice(0, num) + '...';
+    //       } else {
+    //       return str;
+    //   }    
+    // }
+    const shortText = (text, maxLength = 50) => {
+      if (!text) { return ' '}
+      if (text.length <= maxLength) { return text }
+    
+      return text.substr(0, maxLength) + '...'
+    } 
+    const shortTextDescp = (text, maxLength = 90) => {
+      if (!text) { return ' '}
+      if (text.length <= maxLength) { return text }
+    
+      return text.substr(0, maxLength) + '...'
+    } 
     return (
       <>
       {/* <Navbar itemDeptId={departments}/> */}
@@ -180,10 +192,8 @@ class App extends Component {
                   justifyContent="center"
                   direction="column"
                 >
-                  <Text bold size="sm">
-                    {department.name = truncateString(department.name, 50)}
-                  </Text>
-                  <Text size="sm">{department.description = truncateString(department.description, 90)};</Text>
+                  <Text bold size="sm"> {shortText(department.name)}</Text>
+                  <Text size="sm">{shortTextDescp(department.description)} </Text>
                 </Box>
               </Card>
             </Box>

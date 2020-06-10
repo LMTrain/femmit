@@ -82,15 +82,28 @@ class SearchResult extends Component {
 
   render() {
     const { searchedResults, cartItems, displayingCart } = this.state;
-    function truncateString(str, num) {    
-      if (str.length > num && num > 3) {
-              return str.slice(0, (num - 3)) + '...';
-          } else if (str.length > num && num <= 3) {
-              return str.slice(0, num) + '...';
-          } else {
-          return str;
-      }    
-    }
+    // function truncateString(str, num) {    
+    //   if (str.length > num && num > 3) {
+    //           return str.slice(0, (num - 3)) + '...';
+    //       } else if (str.length > num && num <= 3) {
+    //           return str.slice(0, num) + '...';
+    //       } else {
+    //       return str;
+    //   }    
+    // }
+
+    const shortText = (text, maxLength = 50) => {
+      if (!text) { return ' '}
+      if (text.length <= maxLength) { return text }
+    
+      return text.substr(0, maxLength) + '...'
+    } 
+    const shortTextDescp = (text, maxLength = 90) => {
+      if (!text) { return ' '}
+      if (text.length <= maxLength) { return text }
+    
+      return text.substr(0, maxLength) + '...'
+    } 
         
 
     return (
@@ -194,10 +207,10 @@ class SearchResult extends Component {
                     >
                       <Box marginBottom={2}>
                         <Text bold size="sm">
-                          {searchedItem.name = truncateString(searchedItem.name, 50)}
+                        {shortText(searchedItem.name)}
                         </Text>
                       </Box>
-                        <Text size="sm">{searchedItem.description = truncateString(searchedItem.description, 90)};</Text>
+                        <Text size="sm">{shortTextDescp(searchedItem.description)}</Text>
                         <Text color="orchid">${searchedItem.price}</Text>
                       <Box marginTop={2}>
                         <Text size="sm">

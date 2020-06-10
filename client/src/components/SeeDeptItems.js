@@ -26,6 +26,20 @@ var shuffleData = []
 var detailsDisplay = []
 
 const defaultBooks = ["Wars of Law", "Among the Valiant", "Religion", "The Fall of Western Civilization", "Destruction of Black Civilization", "Sex in Antiquity", "Wars", "food", "School", "Country", "Music", "Friends", "Family", "Baby", "Politics"]
+
+const shortText = (text, maxLength = 50) => {
+  if (!text) { return ' '}
+  if (text.length <= maxLength) { return text }
+
+  return text.substr(0, maxLength) + '...'
+} 
+const shortTextDescp = (text, maxLength = 90) => {
+  if (!text) { return ' '}
+  if (text.length <= maxLength) { return text }
+
+  return text.substr(0, maxLength) + '...'
+} 
+
 class SeeDeptItems extends React.Component {
     state = {
         items: [],
@@ -80,19 +94,20 @@ class SeeDeptItems extends React.Component {
         }else{
           bookPrice = String(booksArray[i].saleInfo.retailPrice.amount)          
         }
-        function truncateString(str, num) {    
-          if (str.length > num && num > 3) {
-                  return str.slice(0, (num - 3)) + '...';
-              } else if (str.length > num && num <= 3) {
-                  return str.slice(0, num) + '...';
-              } else {
-                  return str;
-          }
+        // function truncateString(str, num) {    
+        //   if (str.length > num && num > 3) {
+        //           return str.slice(0, (num - 3)) + '...';
+        //       } else if (str.length > num && num <= 3) {
+        //           return str.slice(0, num) + '...';
+        //       } else {
+        //           return str;
+        //   }
         
-        }
+        // }
+
         let authorLabel = " || Author : "
         let pulishedLabel = " || Pulished Date : "
-        bookDescription = truncateString(bookDescription, 90) + "\n" + authorLabel + bookAuthor + "\n" + pulishedLabel + bookPublishDate;
+        bookDescription = shortTextDescp(bookDescription) + "\n" + authorLabel + bookAuthor + "\n" + pulishedLabel + bookPublishDate;
 
         itemsBooksArray.push({"_id": bookId, "name": bookName, "description": bookDescription, "thumbnail": bookThumbnail, "price": bookPrice })
       }     
@@ -193,15 +208,15 @@ class SeeDeptItems extends React.Component {
     };
     
     render() {
-      function truncateString(str, num) {    
-        if (str.length > num && num > 3) {
-                return str.slice(0, (num - 3)) + '...';
-            } else if (str.length > num && num <= 3) {
-                return str.slice(0, num) + '...';
-            } else {
-            return str;
-        }    
-      }
+      // function truncateString(str, num) {    
+      //   if (str.length > num && num > 3) {
+      //           return str.slice(0, (num - 3)) + '...';
+      //       } else if (str.length > num && num <= 3) {
+      //           return str.slice(0, num) + '...';
+      //       } else {
+      //       return str;
+      //   }    
+      // }
       const { department, items, loadingItems, itemDetails } = this.state;
        
         return (  
@@ -268,10 +283,10 @@ class SeeDeptItems extends React.Component {
                               >
                                 <Box marginBottom={2}>
                                   <Text bold size="sm">
-                                    {item.name = truncateString(item.name, 50)}
+                                    {shortText(item.name)}
                                   </Text>
                                 </Box>
-                                <Text size="sm">{item.description = truncateString(item.description, 90) };</Text>
+                                <Text size="sm">{shortTextDescp(item.description)}</Text>
                                 <Text color="orchid">${item.price}</Text>
                                 <Box marginTop={2}>
                                   <Text size="sm">
