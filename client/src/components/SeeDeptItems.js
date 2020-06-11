@@ -94,16 +94,7 @@ class SeeDeptItems extends React.Component {
         }else{
           bookPrice = String(booksArray[i].saleInfo.retailPrice.amount)          
         }
-        // function truncateString(str, num) {    
-        //   if (str.length > num && num > 3) {
-        //           return str.slice(0, (num - 3)) + '...';
-        //       } else if (str.length > num && num <= 3) {
-        //           return str.slice(0, num) + '...';
-        //       } else {
-        //           return str;
-        //   }
         
-        // }
 
         let authorLabel = " || Author : "
         let pulishedLabel = " || Pulished Date : "
@@ -208,15 +199,7 @@ class SeeDeptItems extends React.Component {
     };
     
     render() {
-      // function truncateString(str, num) {    
-      //   if (str.length > num && num > 3) {
-      //           return str.slice(0, (num - 3)) + '...';
-      //       } else if (str.length > num && num <= 3) {
-      //           return str.slice(0, num) + '...';
-      //       } else {
-      //       return str;
-      //   }    
-      // }
+      
       const { department, items, loadingItems, itemDetails } = this.state;
        
         return (  
