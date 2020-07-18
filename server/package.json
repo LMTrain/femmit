@@ -19,7 +19,7 @@
     "eslint-plugin-react": "^7.7.0"
   },
   "dependencies": {
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.19",
     "stack-trace": "0.0.10",
     "strapi": "3.0.0-alpha.19",
     "strapi-email-sendgrid": "^3.0.0-alpha.14.5",
