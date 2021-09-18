@@ -5,35 +5,35 @@
   "description": "A Strapi application.",
   "main": "./server.js",
   "dependencies": {
-    "apollo-server-koa": "^2.11.0",
-    "babel-eslint": "10.1.0",
-    "babel-loader": "8.1.0",
+    "apollo-server-koa": "^2.25.2",
+    "babel-loader": "^8.1.0",
     "bcryptjs": "^2.4.3",
-    "gestalt": "^0.79.1",
+    "gestalt": "^0.79.2",
     "graphql-depth-limit": "^1.1.0",
     "graphql-type-datetime": "^0.2.4",
-    "graphql-type-json": "^0.3.1",
+    "graphql-type-json": "^0.3.2",
     "if-env": "^1.0.4",
-    "immutable": "^4.0.0-rc.12",
+    "immutable": "^4.0.0-rc.15",
     "jsonwebtoken": "^8.5.1",
     "koa2-ratelimit": "^0.9.0",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.21",
+    "node": "^10.16.3",
     "purest": "^3.1.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": ">=2.0.0",
-    "react-spinners": "^0.4.5",
-    "react-stripe-elements": "^2.0.1",
-    "reactstrap": "^8.4.1",
+    "react-scripts": "^4.0.3",
+    "react-spinners": "^0.11.0",
+    "react-stripe-elements": "^2.0.3",
+    "reactstrap": "^8.10.0",
     "stack-trace": "0.0.10",
-    "strapi": "3.0.0-alpha.19",
+    "strapi": "^3.6.8",
     "strapi-email-sendgrid": "^3.0.0-alpha.14.5",
-    "strapi-hook-mongoose": "^3.0.0-alpha.19",
-    "strapi-sdk-javascript": "^0.2.1",
+    "strapi-hook-mongoose": "^3.0.0-next.31",
+    "strapi-sdk-javascript": "^0.2.3",
     "stream-to-array": "^2.3.0",
-    "stripe": "^7.13.0",
-    "webpack": "4.42.0"
+    "stripe": "^7.63.1",
+    "webpack": "^4.42.0"
   },
   "scripts": {
     "setup": "cd admin && npm run setup",
@@ -64,7 +64,7 @@
     ]
   },
   "devDependencies": {
-    "babel-eslint": "10.1.0",
+    "babel-eslint": "^10.1.0",
     "concurrently": "^5.1.0",
     "eslint": "6.6.0",
     "eslint-config-airbnb": "^13.0.0",
@@ -74,14 +74,14 @@
   },
   "author": {
     "name": "A Strapi developer",
-    "email": "",
-    "url": ""
+    "email": "layconmm@msn.com",
+    "url": "https://laycon.herokuapp.com"
   },
   "maintainers": [
     {
       "name": "A Strapi developer",
-      "email": "",
-      "url": ""
+      "email": "layconmm@msn.com",
+      "url": "https://laycon.herokuapp.com"
     }
   ],
   "strapi": {
