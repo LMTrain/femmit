@@ -35,6 +35,7 @@ const Root = () => (
         <React.Fragment>
             <Navbar />
             <Switch>
+//     Declaring pages
                 <Route component={App} exact path="/" />             
                 <Route component={SearchResult} exact path="/searchresult" />
                 <Route component={Signin} path="/signin" />
