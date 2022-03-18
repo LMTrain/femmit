@@ -59,7 +59,7 @@ class Items extends React.Component {
   }
 
   changeDeptIdState = () => { 
-    // console.log("THIS IS PROPS FROM ITEMS.JS", this.props)   
+    console.log("THIS IS PROPS FROM ITEMS.JS", this.props)   
     this.setState({itemDeptId: this.props.match.params.departmentId})
     
   }
