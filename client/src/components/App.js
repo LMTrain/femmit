@@ -60,7 +60,7 @@ class App extends Component {
           }`
         }
       });
-      // console.log(response);
+      console.log(response);
       this.setState({departments: response.data.departments, loadingDepartments: false });
     } catch (err) {
       console.log(err);
