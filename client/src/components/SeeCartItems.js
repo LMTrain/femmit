@@ -53,6 +53,7 @@ class SeeCartItems extends React.Component {
             // this.setState({cartItems: updatedItems }, () => setCart(updatedItems));
         } else {
             console.log( this.state.cartItems );
+            console.log( this.state.cartItems, "THIS IS CART ITEMS" );
             this.deleteItemsFromCart(itemToDeleteId);
             // const updatedItems = [...this.state.cartItems];
             // updatedItems[alreadyInCart].quantity += 1;
